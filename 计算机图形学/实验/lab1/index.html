@@ -469,6 +469,18 @@ and the repository exists.
 <div class="highlight"><pre><span></span><code>/opt/homebrew/Cellar/eigen/3.4.0_1/include/eigen3/Eigen/Dense
 </code></pre></div>
 <h2 id="具体的-c-编程问题">具体的 C++ 编程问题<a class="headerlink" href="#具体的-c-编程问题" title="Permanent link">&para;</a></h2>
+<p>接口要求用 <code>T* data</code> 一维数组存储二维矩阵，构造函数和析构函数应该这样写（RAII）：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// constructor with initializer list</span>
+<span class="n">Matrix</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">rows</span><span class="p">(</span><span class="n">r</span><span class="p">),</span><span class="w"> </span><span class="n">cols</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">T</span><span class="p">[</span><span class="n">c</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">r</span><span class="p">];</span><span class="w"> </span><span class="p">}</span>
+
+<span class="c1">// destructor</span>
+<span class="o">~</span><span class="n">Matrix</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">delete</span><span class="p">[]</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</code></pre></div>
+<p><code>data</code> 是一个动态分配的数组，使用了 <code>new[]</code> 来分配内存。因此，删除 <code>data</code> 时应该使用 <code>delete[]</code>。</p>
+<p>如果在该实现中使用了 <code>delete</code> 而不是 <code>delete[]</code>，则<strong>只会释放数组的第一个元素对应的内存，而不是整个数组</strong>。这会导致内存泄漏问题和未定义的行为。</p>
+<p>另外提一嘴，如果 <code>this-&gt;data</code> 类型为 <code>std::vector&lt;int&gt;</code>，则该类型的析构函数应该由编译器自动生成并自动调用，而不需要手动编写。<code>std::vector&lt;int&gt;</code> 内部实现了动态分配和释放内存的机制。如果在析构函数中手动释放 <code>std::vector&lt;int&gt;</code>，则可能导致重复释放内存和未定义行为的问题。</p>
+<p>二次释放为什么会是一个问题？因为一次释放后，这个地址不再归原来的程序所有，可能被其他新申请的内存空间占有，再次释放可能导致把其他变量申请的内存给释放了之类的问题，和数组越界差不多。</p>
+<hr />
 
 
 
