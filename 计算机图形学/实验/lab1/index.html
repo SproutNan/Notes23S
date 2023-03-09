@@ -479,7 +479,10 @@ and the repository exists.
 <p><code>data</code> 是一个动态分配的数组，使用了 <code>new[]</code> 来分配内存。因此，删除 <code>data</code> 时应该使用 <code>delete[]</code>。</p>
 <p>如果在该实现中使用了 <code>delete</code> 而不是 <code>delete[]</code>，则<strong>只会释放数组的第一个元素对应的内存，而不是整个数组</strong>。这会导致内存泄漏问题和未定义的行为。</p>
 <p>另外提一嘴，如果 <code>this-&gt;data</code> 类型为 <code>std::vector&lt;int&gt;</code>，则该类型的析构函数应该由编译器自动生成并自动调用，而不需要手动编写。<code>std::vector&lt;int&gt;</code> 内部实现了动态分配和释放内存的机制。如果在析构函数中手动释放 <code>std::vector&lt;int&gt;</code>，则可能导致重复释放内存和未定义行为的问题。</p>
-<p>二次释放为什么会是一个问题？因为一次释放后，这个地址不再归原来的程序所有，可能被其他新申请的内存空间占有，再次释放可能导致把其他变量申请的内存给释放了之类的问题，和数组越界差不多。</p>
+<details class="question">
+<summary>二次释放为什么会是一个问题？</summary>
+<p>因为一次释放后，这个地址不再归原来的程序所有，可能被其他新申请的内存空间占有，再次释放可能导致把其他变量申请的内存给释放了之类的问题，和数组越界差不多。</p>
+</details>
 <hr />
 <p>在重载运算符时，基本需要重复写一个二重循环，这里使用了一个范式把这个重复的二重循环提取出来：</p>
 <div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">F</span><span class="o">&gt;</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">_do_on_every_item</span><span class="p">(</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">rhs</span><span class="p">,</span><span class="w"> </span><span class="n">F</span><span class="w"> </span><span class="n">opers</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -512,36 +515,36 @@ and the repository exists.
 <span class="p">}</span>
 </code></pre></div>
 <p>这里必须要在内部进行新对象的生成，如果这里用 new，则相当于把释放的工作交给了调用者，害怕.jpg</p>
-<p>然而，这里首先在返回值的时候，会复制一次 <code>col_copy</code>，然后在调用时，比如 <code>auto c2 = M.col(2)</code> 处又会发生一次复制，在矩阵较大时性能底下，将返回值修改为 <code>std::move(col_copy)</code> 可能会解决这个问题，但是又需要为 Matrix 类提供移动构造函数…… </p>
-<blockquote>
+<p>然而，这里首先在返回值的时候，会复制一次 <code>col_copy</code>，然后在调用时，比如 <code>auto c2 = M.col(2)</code> 处又会发生一次复制，在矩阵较大时性能低下，将返回值修改为 <code>std::move(col_copy)</code> 可能会解决这个问题，但是又需要为 Matrix 类提供移动构造函数…… </p>
+<details class="info">
+<summary>移动构造函数</summary>
 <p>移动构造函数是 C++ 11 引入的新特性，允许在不进行内存拷贝的情况下将对象的资源所有权从一个对象转移给另一个对象。移动构造函数通常比其拷贝构造函数效率更高，可以大幅减少内存使用和移动数据的时间。</p>
 <p>移动构造函数的函数签名如下：</p>
 <div class="highlight"><pre><span></span><code><span class="n">Matrix</span><span class="p">(</span><span class="n">Matrix</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">other</span><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span><span class="p">;</span><span class="w">  </span><span class="c1">// 移动构造函数</span>
 </code></pre></div>
 <p>其中 <code>Matrix</code> 是需要定义移动构造函数的类名称，<code>other</code> 是要移动的类实例。移动构造函数的语义是将 <code>other</code> 中的资源（如内存、文件句柄等等）转移到当前类实例中，并在 <code>other</code> 中保留一个空状态，即保留指向内存的指针，但不进行内存拷贝。</p>
 <p>以下是示例代码：</p>
-<div class="highlight"><pre><span></span><code>Copy code
-class Matrix {
-public:
-    Matrix(Matrix&amp;&amp; other) noexcept : rows(other.rows), cols(other.cols), data(other.data) {
-        other.rows = 0;      // 设置 `other` 中的状态为空，保留指向内存的指针
-        other.cols = 0;
-        other.data = nullptr;
-    }
-    
-private:
-    int rows, cols;
-    double* data;
-};
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Matrix</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w"> </span><span class="n">Matrix</span><span class="p">(</span><span class="n">Matrix</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">other</span><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">rows</span><span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="n">rows</span><span class="p">),</span><span class="w"> </span><span class="n">cols</span><span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="n">cols</span><span class="p">),</span><span class="w"> </span><span class="n">data</span><span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">     </span><span class="n">other</span><span class="p">.</span><span class="n">rows</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">      </span><span class="c1">// 设置 `other` 中的状态为空，保留指向内存的指针</span>
+<span class="w">     </span><span class="n">other</span><span class="p">.</span><span class="n">cols</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">     </span><span class="n">other</span><span class="p">.</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="w"> </span><span class="p">}</span>
 
-int main() {
-    Matrix mat1(10, 10);
-    Matrix mat2 = std::move(mat1);   // 调用移动构造函数将 mat1 中的资源移动到 mat2 中。
-}
+<span class="k">private</span><span class="o">:</span>
+<span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">rows</span><span class="p">,</span><span class="w"> </span><span class="n">cols</span><span class="p">;</span>
+<span class="w"> </span><span class="kt">double</span><span class="o">*</span><span class="w"> </span><span class="n">data</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w"> </span><span class="n">Matrix</span><span class="w"> </span><span class="n">mat1</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span>
+<span class="w"> </span><span class="n">Matrix</span><span class="w"> </span><span class="n">mat2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">mat1</span><span class="p">);</span><span class="w">   </span><span class="c1">// 调用移动构造函数将 mat1 中的资源移动到 mat2 中。</span>
+<span class="p">}</span>
 </code></pre></div>
 <p>在此示例中，<code>mat1</code> 资源被移动到了 <code>mat2</code> 中，<code>mat1</code> 中的状态被设为空，即保留指向内存的指针，以免在 <code>mat1</code> 被析构时出现 Segmentation Fault。</p>
 <p>需要注意的是，移动构造函数通常使用右值引用参数，通过 <code>&amp;&amp;</code> 进行声明。在函数体中，可以使用 <code>std::move</code> 结合移动语义实现资源的移动操作。</p>
-</blockquote>
+</details>
 
 
 
