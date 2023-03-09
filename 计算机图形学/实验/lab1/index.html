@@ -66,6 +66,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#背景介绍" class="md-skip">
+          跳转至
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -287,9 +292,59 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Lab1
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         Lab1
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#背景介绍" class="md-nav__link">
+    背景介绍
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#github-push-遇到的问题" class="md-nav__link">
+    Github push 遇到的问题
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eigen-库使用遇到的问题" class="md-nav__link">
+    Eigen 库使用遇到的问题
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#具体的-c-编程问题" class="md-nav__link">
+    具体的 C++ 编程问题
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -327,6 +382,42 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#背景介绍" class="md-nav__link">
+    背景介绍
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#github-push-遇到的问题" class="md-nav__link">
+    Github push 遇到的问题
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eigen-库使用遇到的问题" class="md-nav__link">
+    Eigen 库使用遇到的问题
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#具体的-c-编程问题" class="md-nav__link">
+    具体的 C++ 编程问题
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -345,7 +436,39 @@
 
   <h1>Lab1</h1>
 
+<p>注意：这里不是实验报告，仅记录一下实验过程中的新知识和踩的坑。</p>
+<h2 id="背景介绍">背景介绍<a class="headerlink" href="#背景介绍" title="Permanent link">&para;</a></h2>
+<p>本次实验的目的是实现一个矩阵类，并且和 Eigen 库的计算做 compare。加分项是实现稀疏矩阵。</p>
+<h2 id="github-push-遇到的问题">Github push 遇到的问题<a class="headerlink" href="#github-push-遇到的问题" title="Permanent link">&para;</a></h2>
+<p><strong>在 SSH 连接远程仓库时，提示</strong></p>
+<div class="highlight"><pre><span></span><code>kex_exchange_identification: Connection closed by remote host
+Connection closed by 20.205.243.166 port 22
+fatal: Could not read from remote repository.
 
+Please make sure you have the correct access rights
+and the repository exists.
+</code></pre></div>
+<p>解决方案：</p>
+<ul>
+<li>检查 GitHub 上的 SSH 密钥和本地是否一致</li>
+<li>换个网，比如这里我换成个人热点就好了</li>
+</ul>
+<h2 id="eigen-库使用遇到的问题">Eigen 库使用遇到的问题<a class="headerlink" href="#eigen-库使用遇到的问题" title="Permanent link">&para;</a></h2>
+<p><strong>Eigen 是什么？</strong></p>
+<p>Eigen 是一个用 C++ 编写的线性代数库，它提供了一系列的矩阵、向量、数组和运算符等工具，可用于执行各种线性代数计算，例如矩阵分解、矩阵求逆、线性回归、特征值分解等。Eigen 是一个开源的库，由高性能数值计算、声音处理和机器学习等领域的专业人士创建和维护。</p>
+<p><strong>macOS 怎么下载 Eigen？</strong></p>
+<p>输入以下命令来安装 Eigen：</p>
+<div class="highlight"><pre><span></span><code>brew<span class="w"> </span>install<span class="w"> </span>eigen
+</code></pre></div>
+<p>安装完成后，比如要使用矢量数据结构，代码中使用以下语句包含 Eigen 库的头文件：</p>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;Eigen/Dense&gt;</span>
+</code></pre></div>
+<p><strong>为什么 include 失败了？</strong></p>
+<p>没有设置编译器的 include 路径，这还是我第一次在小项目里用这种大第三方库，之前用的 json 库都是一个 hpp 文件我直接拷贝到项目路径的，就没有配 include 路径的经验，这部分以后再补，能狗则狗（不是</p>
+<p>不配 include 路径，就索性把这个库的绝对路径找到。。。比如经过我的一番搜索，在 Homebrew 下载的软件包，比如 Eigen 的路径则是：</p>
+<div class="highlight"><pre><span></span><code>/opt/homebrew/Cellar/eigen/3.4.0_1/include/eigen3/Eigen/Dense
+</code></pre></div>
+<h2 id="具体的-c-编程问题">具体的 C++ 编程问题<a class="headerlink" href="#具体的-c-编程问题" title="Permanent link">&para;</a></h2>
 
 
 
