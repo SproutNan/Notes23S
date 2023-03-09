@@ -481,6 +481,17 @@ and the repository exists.
 <p>另外提一嘴，如果 <code>this-&gt;data</code> 类型为 <code>std::vector&lt;int&gt;</code>，则该类型的析构函数应该由编译器自动生成并自动调用，而不需要手动编写。<code>std::vector&lt;int&gt;</code> 内部实现了动态分配和释放内存的机制。如果在析构函数中手动释放 <code>std::vector&lt;int&gt;</code>，则可能导致重复释放内存和未定义行为的问题。</p>
 <p>二次释放为什么会是一个问题？因为一次释放后，这个地址不再归原来的程序所有，可能被其他新申请的内存空间占有，再次释放可能导致把其他变量申请的内存给释放了之类的问题，和数组越界差不多。</p>
 <hr />
+<p>在重载运算符时，基本需要重复写一个二重循环，这里使用了一个范式把这个重复的二重循环提取出来：</p>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">F</span><span class="o">&gt;</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">_do_on_every_item</span><span class="p">(</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">rhs</span><span class="p">,</span><span class="w"> </span><span class="n">F</span><span class="w"> </span><span class="n">opers</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">_check_dim_issame</span><span class="p">(</span><span class="n">rhs</span><span class="p">);</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">rows</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">cols</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
+<span class="w">            </span><span class="n">opers</span><span class="p">((</span><span class="o">*</span><span class="k">this</span><span class="p">)(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">),</span><span class="w"> </span><span class="n">rhs</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>这里 opers 应该放一个 lambda 表达式，为了避免写 lambda 表达式的冗长类型，这里的做法是把其类型用一个模版类型 F 来代替。</p>
+<p>其实，如果这里一定是一个 lambda 表达式的话，可以不写模版，直接用 auto opers 让编译器自行推导。不过，使用模板变量可以提供更好的类型安全以及代码的可读性和可维护性。auto 无法提供足够的类型安全保证，无法检查传递的实参类型是否与预期的函数签名匹配。如果函数的参数类型发生更改，代码可能会在编译时或运行时崩溃。</p>
+<hr />
 
 
 
