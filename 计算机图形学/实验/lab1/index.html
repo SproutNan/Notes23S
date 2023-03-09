@@ -492,8 +492,8 @@ and the repository exists.
 <p>这里 opers 应该放一个 lambda 表达式，为了避免写 lambda 表达式的冗长类型，这里的做法是把其类型用一个模版类型 F 来代替。</p>
 <details class="info">
 <summary>其实，如果这里一定是一个 lambda 表达式的话，可以不写模版，直接用 auto opers 让编译器自行推导。</summary>
+<p>不过，使用模板变量可以提供更好的类型安全以及代码的可读性和可维护性。auto 无法提供足够的类型安全保证，无法检查传递的实参类型是否与预期的函数签名匹配。如果函数的参数类型发生更改，代码可能会在编译时或运行时崩溃。</p>
 </details>
-<p>​    不过，使用模板变量可以提供更好的类型安全以及代码的可读性和可维护性。auto 无法提供足够的类型安全保证，无法检查传递的实参类型是否与预期的函数签名匹配。如果函数的参数类型发生更改，代码可能会在编译时或运行时崩溃。</p>
 <p>这样，比方说在后面的重载 <code>operator+=(Matrix&amp; rhs)</code> 时，就只需要写</p>
 <div class="highlight"><pre><span></span><code><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="k">operator</span><span class="o">+=</span><span class="p">(</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">rhs</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">_do_on_every_item</span><span class="p">(</span><span class="n">rhs</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="o">=</span><span class="p">](</span><span class="n">T</span><span class="w"> </span><span class="o">&amp;</span><span class="n">item</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="n">r_item</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">r_item</span><span class="p">;</span><span class="w"> </span><span class="p">});</span>
