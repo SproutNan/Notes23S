@@ -349,6 +349,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#使用-chrono-进行运行时间估计" class="md-nav__link">
+    使用 chrono 进行运行时间估计
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -426,6 +433,13 @@
         <li class="md-nav__item">
   <a href="#稀疏矩阵处理思路" class="md-nav__link">
     稀疏矩阵处理思路
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#使用-chrono-进行运行时间估计" class="md-nav__link">
+    使用 chrono 进行运行时间估计
   </a>
   
 </li>
@@ -563,6 +577,17 @@ and the repository exists.
 <p>能否使用类似 <code>M.f()</code> 这样的语法来进行重载的运算符的调用？</p>
 <p>显然，如果重载了 <code>operator+</code> ，则可以使用类似 <code>C = A.operator+(B)</code> 这样的语法来显式调用，但是这看上去很蠢。而且，如果考虑到 <code>operator+=</code> ，则可能会发现此函数返回类型应该是 void，因为一般我们会忽略返回值。</p>
 <p>在某些情况下给这种函数提供一个 <code>Matrix&amp;</code> 的返回值可以让这个函数支持链式调用，比如 <code>A += B += C</code>。</p>
+<hr />
+<p>还遇到了一个 const 标记的问题，比如 <code>operator+=(Matrix&amp; rhs)</code> 这个 rhs 应当标记为一个 <code>const Matrix&amp;</code> 。</p>
+<details class="info">
+<summary>const 的一些用法</summary>
+<p>也遇到过一些人说千万不要使用 const，但是有些面试还是会考到，所以稍微学习一下，有个印象。</p>
+<ul>
+<li>const 修饰对象，表明对象不能被修改：直接尝试这么做是编译时错误，而间接尝试这么做（例如通过到非常量类型的引用或指针修改常量对象）的行为未定义。</li>
+<li><strong>非静态成员函数</strong>可以带 const，带有不同 const 的函数具有不同类型，从而可以相互重载。在有 const 限定符的函数体内，<code>*this</code> 有同样的限定，例如在有 const 限定符的成员函数中只能正常地调用其他有 const 限定符的成员函数。（如果应用了 const_cast，或通过不涉及 this 的访问路径，那么仍然可以调用没有 const 限定符的成员函数。）</li>
+</ul>
+</details>
+<p>但是 <code>_do_on_every_item</code> 不一定是只读的，如果在这标 const，则使用 rhs 的函数（<code>doei</code>）也必须相应更改，可能会导致预期之外的行为，比较僵硬，暂时没想到好的思路。</p>
 <h2 id="稀疏矩阵处理思路">稀疏矩阵处理思路<a class="headerlink" href="#稀疏矩阵处理思路" title="Permanent link">&para;</a></h2>
 <p>稀疏矩阵的数据结构为</p>
 <div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">R</span><span class="o">&gt;</span>
@@ -575,6 +600,15 @@ and the repository exists.
 <p><a href="https://zh.cppreference.com/w/cpp/container/vector/erase2">cppreference 上的说明</a></p>
 <p>这类算法将迭代器失效的问题隐藏了起来，不必由使用者担心。</p>
 </details>
+<h2 id="使用-chrono-进行运行时间估计">使用 chrono 进行运行时间估计<a class="headerlink" href="#使用-chrono-进行运行时间估计" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">high_resolution_clock</span><span class="o">::</span><span class="n">now</span><span class="p">();</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">D3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">D1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">D2</span><span class="p">;</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">D4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">D1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">D5</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">D3</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">D4</span><span class="p">;</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">high_resolution_clock</span><span class="o">::</span><span class="n">now</span><span class="p">();</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">duration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">duration_cast</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">nanoseconds</span><span class="o">&gt;</span><span class="p">(</span><span class="n">end</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span><span class="p">);</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;My matrix calculating time: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">duration</span><span class="p">.</span><span class="n">count</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; ns.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+</code></pre></div>
 
 
 
