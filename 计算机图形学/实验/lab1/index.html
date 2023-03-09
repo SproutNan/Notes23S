@@ -490,8 +490,58 @@ and the repository exists.
 <span class="p">}</span>
 </code></pre></div>
 <p>这里 opers 应该放一个 lambda 表达式，为了避免写 lambda 表达式的冗长类型，这里的做法是把其类型用一个模版类型 F 来代替。</p>
-<p>其实，如果这里一定是一个 lambda 表达式的话，可以不写模版，直接用 auto opers 让编译器自行推导。不过，使用模板变量可以提供更好的类型安全以及代码的可读性和可维护性。auto 无法提供足够的类型安全保证，无法检查传递的实参类型是否与预期的函数签名匹配。如果函数的参数类型发生更改，代码可能会在编译时或运行时崩溃。</p>
+<details class="info">
+<summary>其实，如果这里一定是一个 lambda 表达式的话，可以不写模版，直接用 auto opers 让编译器自行推导。</summary>
+</details>
+<p>​    不过，使用模板变量可以提供更好的类型安全以及代码的可读性和可维护性。auto 无法提供足够的类型安全保证，无法检查传递的实参类型是否与预期的函数签名匹配。如果函数的参数类型发生更改，代码可能会在编译时或运行时崩溃。</p>
+<p>这样，比方说在后面的重载 <code>operator+=(Matrix&amp; rhs)</code> 时，就只需要写</p>
+<div class="highlight"><pre><span></span><code><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="k">operator</span><span class="o">+=</span><span class="p">(</span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="n">rhs</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">_do_on_every_item</span><span class="p">(</span><span class="n">rhs</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="o">=</span><span class="p">](</span><span class="n">T</span><span class="w"> </span><span class="o">&amp;</span><span class="n">item</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="n">r_item</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">r_item</span><span class="p">;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">*</span><span class="k">this</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>个人感觉代码还算易懂，rhs 提供了右操作数，lambda 表达式则清楚地表达了对每个元素做 += 运算。</p>
 <hr />
+<p>有一些操作涉及从源矩阵构造一些新的矩阵对象，比如 <code>col(int c)</code> , <code>submat(...)</code> ，我原来是这么写的：</p>
+<div class="highlight"><pre><span></span><code><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">col</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">_check_c_exceeds</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">col_copy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Matrix</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">rows</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">rows</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">        </span><span class="n">col_copy</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">)(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">col_copy</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>这里必须要在内部进行新对象的生成，如果这里用 new，则相当于把释放的工作交给了调用者，害怕.jpg</p>
+<p>然而，这里首先在返回值的时候，会复制一次 <code>col_copy</code>，然后在调用时，比如 <code>auto c2 = M.col(2)</code> 处又会发生一次复制，在矩阵较大时性能底下，将返回值修改为 <code>std::move(col_copy)</code> 可能会解决这个问题，但是又需要为 Matrix 类提供移动构造函数…… </p>
+<blockquote>
+<p>移动构造函数是 C++ 11 引入的新特性，允许在不进行内存拷贝的情况下将对象的资源所有权从一个对象转移给另一个对象。移动构造函数通常比其拷贝构造函数效率更高，可以大幅减少内存使用和移动数据的时间。</p>
+<p>移动构造函数的函数签名如下：</p>
+<div class="highlight"><pre><span></span><code><span class="n">Matrix</span><span class="p">(</span><span class="n">Matrix</span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">other</span><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span><span class="p">;</span><span class="w">  </span><span class="c1">// 移动构造函数</span>
+</code></pre></div>
+<p>其中 <code>Matrix</code> 是需要定义移动构造函数的类名称，<code>other</code> 是要移动的类实例。移动构造函数的语义是将 <code>other</code> 中的资源（如内存、文件句柄等等）转移到当前类实例中，并在 <code>other</code> 中保留一个空状态，即保留指向内存的指针，但不进行内存拷贝。</p>
+<p>以下是示例代码：</p>
+<div class="highlight"><pre><span></span><code>Copy code
+class Matrix {
+public:
+    Matrix(Matrix&amp;&amp; other) noexcept : rows(other.rows), cols(other.cols), data(other.data) {
+        other.rows = 0;      // 设置 `other` 中的状态为空，保留指向内存的指针
+        other.cols = 0;
+        other.data = nullptr;
+    }
+    
+private:
+    int rows, cols;
+    double* data;
+};
+
+int main() {
+    Matrix mat1(10, 10);
+    Matrix mat2 = std::move(mat1);   // 调用移动构造函数将 mat1 中的资源移动到 mat2 中。
+}
+</code></pre></div>
+<p>在此示例中，<code>mat1</code> 资源被移动到了 <code>mat2</code> 中，<code>mat1</code> 中的状态被设为空，即保留指向内存的指针，以免在 <code>mat1</code> 被析构时出现 Segmentation Fault。</p>
+<p>需要注意的是，移动构造函数通常使用右值引用参数，通过 <code>&amp;&amp;</code> 进行声明。在函数体中，可以使用 <code>std::move</code> 结合移动语义实现资源的移动操作。</p>
+</blockquote>
 
 
 
