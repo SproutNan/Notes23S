@@ -573,6 +573,11 @@ and the repository exists.
 <p>在此示例中，<code>mat1</code> 资源被移动到了 <code>mat2</code> 中，<code>mat1</code> 中的状态被设为空，即保留指向内存的指针，以免在 <code>mat1</code> 被析构时出现 Segmentation Fault。</p>
 <p>需要注意的是，移动构造函数通常使用右值引用参数，通过 <code>&amp;&amp;</code> 进行声明。在函数体中，可以使用 <code>std::move</code> 结合移动语义实现资源的移动操作。</p>
 </details>
+<p><strong>突发</strong>：群聊消息导致我重新审视了一下这段代码，我没有给类实现拷贝构造函数，此时的默认拷贝构造函数是浅拷贝。<code>col_copy</code> 肯定是会调用一次析构函数来把 data 的值释放掉，这样肯定会报错的。然而在这种情况下使用</p>
+<div class="highlight"><pre><span></span><code>g++<span class="w"> </span>-fsanitize<span class="o">=</span>address<span class="w"> </span>-g<span class="w"> </span>matrix_main.cpp<span class="w"> </span>-std<span class="o">=</span>c++20<span class="w"> </span>-o<span class="w"> </span>matrix_main
+</code></pre></div>
+<p>后还是不会报错，猜测可能是 RVO 优化掉了，使用 <code>-fno-elide-constructors</code> 禁用 RVO，结果报错。</p>
+<p>解决方法：老老实实实现拷贝构造函数，以糊弄助教。</p>
 <hr />
 <p>能否使用类似 <code>M.f()</code> 这样的语法来进行重载的运算符的调用？</p>
 <p>显然，如果重载了 <code>operator+</code> ，则可以使用类似 <code>C = A.operator+(B)</code> 这样的语法来显式调用，但是这看上去很蠢。而且，如果考虑到 <code>operator+=</code> ，则可能会发现此函数返回类型应该是 void，因为一般我们会忽略返回值。</p>
