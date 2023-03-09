@@ -342,6 +342,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#稀疏矩阵处理思路" class="md-nav__link">
+    稀疏矩阵处理思路
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -412,6 +419,13 @@
         <li class="md-nav__item">
   <a href="#具体的-c-编程问题" class="md-nav__link">
     具体的 C++ 编程问题
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#稀疏矩阵处理思路" class="md-nav__link">
+    稀疏矩阵处理思路
   </a>
   
 </li>
@@ -515,7 +529,7 @@ and the repository exists.
 <span class="p">}</span>
 </code></pre></div>
 <p>这里必须要在内部进行新对象的生成，如果这里用 new，则相当于把释放的工作交给了调用者，害怕.jpg</p>
-<p>然而，这里首先在返回值的时候，会复制一次 <code>col_copy</code>，然后在调用时，比如 <code>auto c2 = M.col(2)</code> 处又会发生一次复制，在矩阵较大时性能低下，将返回值修改为 <code>std::move(col_copy)</code> 可能会解决这个问题，但是又需要为 Matrix 类提供移动构造函数…… </p>
+<p>然而，这里首先在返回值的时候，会复制一次 <code>col_copy</code>，然后在调用时，比如 <code>auto c2 = M.col(2)</code> 处又会发生一次复制，在矩阵较大时性能低下，将返回值修改为 <code>std::move(col_copy)</code> 可能会解决这个问题，但是又需要为 Matrix 类提供移动构造函数…… 综合一次实验的成本来看，这里不采用这种实现，以后有机会再自己实现。</p>
 <details class="info">
 <summary>移动构造函数</summary>
 <p>移动构造函数是 C++ 11 引入的新特性，允许在不进行内存拷贝的情况下将对象的资源所有权从一个对象转移给另一个对象。移动构造函数通常比其拷贝构造函数效率更高，可以大幅减少内存使用和移动数据的时间。</p>
@@ -544,6 +558,22 @@ and the repository exists.
 </code></pre></div>
 <p>在此示例中，<code>mat1</code> 资源被移动到了 <code>mat2</code> 中，<code>mat1</code> 中的状态被设为空，即保留指向内存的指针，以免在 <code>mat1</code> 被析构时出现 Segmentation Fault。</p>
 <p>需要注意的是，移动构造函数通常使用右值引用参数，通过 <code>&amp;&amp;</code> 进行声明。在函数体中，可以使用 <code>std::move</code> 结合移动语义实现资源的移动操作。</p>
+</details>
+<hr />
+<p>能否使用类似 <code>M.f()</code> 这样的语法来进行重载的运算符的调用？</p>
+<p>显然，如果重载了 <code>operator+</code> ，则可以使用类似 <code>C = A.operator+(B)</code> 这样的语法来显式调用，但是这看上去很蠢。而且，如果考虑到 <code>operator+=</code> ，则可能会发现此函数返回类型应该是 void，因为一般我们会忽略返回值。</p>
+<p>在某些情况下给这种函数提供一个 <code>Matrix&amp;</code> 的返回值可以让这个函数支持链式调用，比如 <code>A += B += C</code>。</p>
+<h2 id="稀疏矩阵处理思路">稀疏矩阵处理思路<a class="headerlink" href="#稀疏矩阵处理思路" title="Permanent link">&para;</a></h2>
+<p>稀疏矩阵的数据结构为</p>
+<div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">typename</span><span class="w"> </span><span class="nc">R</span><span class="o">&gt;</span>
+<span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="n">R</span><span class="o">&gt;&gt;&gt;</span>
+</code></pre></div>
+<p>这样比较方便访问某一行，但是不太方便访问某一列。一些诸如十字链表的结构复杂，并且也不方便支持转置运算。这样看来稀疏矩阵的数据结构设计还需要考虑其支持的一些运算。</p>
+<p>在进行运算时，需要考虑值是否变为 0 了，这样的情况需要从稀疏矩阵中删除这个记录。这里有很多值得注意的细节，比如需要从 vector 中 erase 则必须使用迭代器进行遍历；在 erase 之后迭代器已经失效，必须直接退出，不能接着删……</p>
+<details class="info">
+<summary>使用 erase_if</summary>
+<p><a href="https://zh.cppreference.com/w/cpp/container/vector/erase2">cppreference 上的说明</a></p>
+<p>这类算法将迭代器失效的问题隐藏了起来，不必由使用者担心。</p>
 </details>
 
 
