@@ -578,6 +578,10 @@ and the repository exists.
 </code></pre></div>
 <p>后还是不会报错，猜测可能是 RVO 优化掉了，使用 <code>-fno-elide-constructors</code> 禁用 RVO，结果报错。</p>
 <p>解决方法：老老实实实现拷贝构造函数，以糊弄助教。</p>
+<details class="info">
+<summary>RVO 优化</summary>
+<p><a href="https://zhuanlan.zhihu.com/p/341653187">RVO 优化相关的文章</a></p>
+</details>
 <hr />
 <p>能否使用类似 <code>M.f()</code> 这样的语法来进行重载的运算符的调用？</p>
 <p>显然，如果重载了 <code>operator+</code> ，则可以使用类似 <code>C = A.operator+(B)</code> 这样的语法来显式调用，但是这看上去很蠢。而且，如果考虑到 <code>operator+=</code> ，则可能会发现此函数返回类型应该是 void，因为一般我们会忽略返回值。</p>
