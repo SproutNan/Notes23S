@@ -587,6 +587,7 @@ and the repository exists.
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+<p><strong>突发</strong>：写了这个之后导致所有的返回值都出错了（找不到 Matrix 的构造函数）。原因在于拷贝构造函数签名是 <code>Matrix(const Matrix&amp; m)</code>，在一些编译器的实现中和不加 const 的版本不能互相兼容（比如 clion 会报错，但是 g++ 不会），解决方案是把签名改过来，然后给各个函数恰当地标上 const 标记。</p>
 <details class="info">
 <summary>RVO 优化</summary>
 <p><a href="https://zhuanlan.zhihu.com/p/341653187">RVO 优化相关的文章</a></p>
