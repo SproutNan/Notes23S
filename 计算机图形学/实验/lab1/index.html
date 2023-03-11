@@ -515,6 +515,10 @@ and the repository exists.
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">ptr</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="c1">// 输出指针的大小</span>
 </code></pre></div>
 <p>在这个例子中，ptr 是一个合法的指针，但直接对它进行解引用操作将导致未定义行为。通常情况下，<code>new int[0]</code> 的使用场景不多，因为它没有实际的用途。</p>
+<hr />
+<p>上面这段是 ChatGPT 生成的，和我本地的情况也一致，但是查询 cppreference 发现应该是一个 ub:</p>
+<p>[new 关键字的解释] The first dimension of zero is <strong>acceptable</strong>, and the allocation function is called.</p>
+<p>[malloc 中的定义] 若 size 为零，则 malloc 的行为实现是其实现（生成）时定义的。例如可返回空指针。亦可返回非空指针；但不应当解引用这种指针，而且应将它传递给 free 以避免内存泄漏。</p>
 </details>
 <details class="question">
 <summary>二次释放为什么会是一个问题？</summary>
