@@ -508,6 +508,15 @@ and the repository exists.
 <p>如果在该实现中使用了 <code>delete</code> 而不是 <code>delete[]</code>，则<strong>只会释放数组的第一个元素对应的内存，而不是整个数组</strong>。这会导致内存泄漏问题和未定义的行为。</p>
 <p>另外提一嘴，如果 <code>this-&gt;data</code> 类型为 <code>std::vector&lt;int&gt;</code>，则该类型的析构函数应该由编译器自动生成并自动调用，而不需要手动编写。<code>std::vector&lt;int&gt;</code> 内部实现了动态分配和释放内存的机制。如果在析构函数中手动释放 <code>std::vector&lt;int&gt;</code>，则可能导致重复释放内存和未定义行为的问题。</p>
 <details class="question">
+<summary>尝试申请一个长度为 0 的矩阵会不会出问题？</summary>
+<p>根据 C++ 标准，对于 new 表达式和数组形式的 new 表达式，如果请求的元素数量为 0，则程序行为是有定义的，且返回一个合法的指针（这个指针不是空指针）。</p>
+<p>对于 <code>new int[0]</code> 这一特殊情况，它将分配一个长度为 0 的整数数组，并返回一个可用的指针，但不能对此指针进行解引用操作。</p>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="o">*</span><span class="w"> </span><span class="n">ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span><span class="w"> </span><span class="c1">// 分配一个长度为0的整数数组</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">ptr</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="c1">// 输出指针的大小</span>
+</code></pre></div>
+<p>在这个例子中，ptr 是一个合法的指针，但直接对它进行解引用操作将导致未定义行为。通常情况下，<code>new int[0]</code> 的使用场景不多，因为它没有实际的用途。</p>
+</details>
+<details class="question">
 <summary>二次释放为什么会是一个问题？</summary>
 <p>因为一次释放后，这个地址不再归原来的程序所有，可能被其他新申请的内存空间占有，再次释放可能导致把其他变量申请的内存给释放了之类的问题，和数组越界差不多。</p>
 </details>
