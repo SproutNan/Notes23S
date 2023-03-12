@@ -356,6 +356,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#使用智能指针管理内存" class="md-nav__link">
+    使用智能指针管理内存？
+  </a>
+  
+    <nav class="md-nav" aria-label="使用智能指针管理内存？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stdshared_ptr" class="md-nav__link">
+    std::shared_ptr
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stdunique_ptr" class="md-nav__link">
+    std::unique_ptr
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -441,6 +468,33 @@
   <a href="#使用-chrono-进行运行时间估计" class="md-nav__link">
     使用 chrono 进行运行时间估计
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#使用智能指针管理内存" class="md-nav__link">
+    使用智能指针管理内存？
+  </a>
+  
+    <nav class="md-nav" aria-label="使用智能指针管理内存？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stdshared_ptr" class="md-nav__link">
+    std::shared_ptr
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stdunique_ptr" class="md-nav__link">
+    std::unique_ptr
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -641,6 +695,67 @@ and the repository exists.
 <span class="k">auto</span><span class="w"> </span><span class="n">duration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">duration_cast</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">chrono</span><span class="o">::</span><span class="n">nanoseconds</span><span class="o">&gt;</span><span class="p">(</span><span class="n">end</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span><span class="p">);</span>
 <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;My matrix calculating time: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">duration</span><span class="p">.</span><span class="n">count</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; ns.</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
 </code></pre></div>
+<h2 id="使用智能指针管理内存">使用智能指针管理内存？<a class="headerlink" href="#使用智能指针管理内存" title="Permanent link">&para;</a></h2>
+<p>首先，写到这里，<strong>我觉得我非常愚蠢</strong>，data 本来就是一维数组，对矩阵里每个元素做对应的操作，完全可以在一维数组上进行。</p>
+<p>其次，为什么不用智能指针或者 vector，是因为课程群里有小可爱：「用 class 写 class 也太怪了吧」，仔细想想我选这门课就是为了锻炼 C++ 水平，再吃老本感觉说不过去。再然后，有神打了个样，感觉正好是学智能指针的良好契机。</p>
+<ul>
+<li>C++11 引入智能指针的概念，使用<strong>引用计数</strong>的想法，包括 <code>std::shared_ptr</code>/<code>std::unique_ptr</code>/<code>std::weak_ptr</code>，使用它们需要包含头文件 <code>&lt;memory&gt;</code>。</li>
+</ul>
+<h3 id="stdshared_ptr"><code>std::shared_ptr</code><a class="headerlink" href="#stdshared_ptr" title="Permanent link">&para;</a></h3>
+<p>可以记录多少个 shared_ptr 指向同一个对象。</p>
+<p>目前使用这个类来做测试：</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">father</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">father</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;constructed&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="o">~</span><span class="n">father</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;destructed&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">print</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;print() called&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>创建一个指针：</p>
+<div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">father</span><span class="o">&gt;</span><span class="p">();</span>
+</code></pre></div>
+<p>对 ptr 使用 <code>*</code> 和 <code>-&gt;</code> 就像是对原来的对象指针操作一样，对 ptr 使用 <code>.</code> 就是对智能指针这个对象操作：</p>
+<div class="highlight"><pre><span></span><code><span class="n">ptr</span><span class="o">-&gt;</span><span class="n">print</span><span class="p">();</span>
+<span class="p">(</span><span class="o">*</span><span class="n">ptr</span><span class="p">).</span><span class="n">print</span><span class="p">();</span>
+<span class="n">ptr</span><span class="p">.</span><span class="n">get</span><span class="p">();</span><span class="w">  </span><span class="c1">// yes, 输出原始指针，原始指针不影响引用计数</span>
+<span class="c1">// ptr-&gt;get();  // no</span>
+<span class="c1">// ptr.print();  // no</span>
+</code></pre></div>
+<p>支持同一个对象受多个 shared_ptr 管理：</p>
+<div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">father</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">another_ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ptr</span><span class="p">;</span>
+<span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">ptr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">another_ptr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="c1">// 二者一样</span>
+</code></pre></div>
+<p>而且，第一个 ptr 也会知道此对象的引用计数增加了，并且这两个对象之间的比较应该就是指针值之间的比较：</p>
+<div class="highlight"><pre><span></span><code><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">ptr</span><span class="p">.</span><span class="n">use_count</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">another_ptr</span><span class="p">.</span><span class="n">use_count</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="c1">// 2 2</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ptr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">another_ptr</span><span class="p">)</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;yes!&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// 正常输出</span>
+</code></pre></div>
+<p>使用 <code>reset</code> 可以放弃对对象的管理：</p>
+<div class="highlight"><pre><span></span><code><span class="n">ptr</span><span class="p">.</span><span class="n">reset</span><span class="p">();</span><span class="w"> </span><span class="c1">// ptr 不再管理 father 对象，其地址变成 0x0</span>
+<span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">ptr</span><span class="p">.</span><span class="n">use_count</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">another_ptr</span><span class="p">.</span><span class="n">use_count</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="c1">// 0 1</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ptr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">nullptr</span><span class="p">)</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;yes!&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// 正常输出</span>
+</code></pre></div>
+<h3 id="stdunique_ptr"><code>std::unique_ptr</code><a class="headerlink" href="#stdunique_ptr" title="Permanent link">&para;</a></h3>
+<p><code>std::unique_ptr</code> 是一种独占的智能指针，它禁止其他智能指针与其共享同一个对象。</p>
+<p>创建一个指针：</p>
+<div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">make_unique</span><span class="o">&lt;</span><span class="n">father</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">another_ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ptr</span><span class="p">;</span><span class="w"> </span><span class="c1">// 编译期报错</span>
+</code></pre></div>
+<p>不能复制，但是可以用 <code>std::move</code> 转移：</p>
+<div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">make_unique</span><span class="o">&lt;</span><span class="n">father</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">ptr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w">  </span><span class="c1">// 0x600001f90030</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">another_ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">ptr</span><span class="p">);</span>
+<span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">another_ptr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w">  </span><span class="c1">// 0x600001f90030</span>
+<span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">ptr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w">  </span><span class="c1">// 0x0</span>
+</code></pre></div>
+<details class="question">
+<summary>之后再使用 <code>ptr-&gt;print()</code> 为什么还会打印？</summary>
+<p>—— Undefined behavior means anything can happen including but not limited to the program giving your expected output. But never rely(or make conclusions based) on the output of a program that has UB. The program may just crash.</p>
+<p>—— Because of C++ design goals you need to do the checking to see if you can call the member function. Change your code to <code>if (ptr) ptr-&gt;print();</code>. (On my system, the OP code crashes. Both behaviors comply with undefined behavior.)</p>
+<p>—— In general compilers allow you to call methods on null pointers as long as those methods are non-virtual and don't access any members.</p>
+<p>—— "Why does the standard not prohibit this?" - It does by saying that dereferencing a pointer that doesn't point to a live object(here is <code>this</code>, i.e. call <code>ptr-&gt;print()</code> is <code>(*this).print()</code>) has undefined behavior (or something like that).</p>
+</details>
 
 
 
