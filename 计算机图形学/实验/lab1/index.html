@@ -378,6 +378,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#stdweak_ptr" class="md-nav__link">
+    std::weak_ptr
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -489,6 +496,13 @@
           <li class="md-nav__item">
   <a href="#stdunique_ptr" class="md-nav__link">
     std::unique_ptr
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stdweak_ptr" class="md-nav__link">
+    std::weak_ptr
   </a>
   
 </li>
@@ -755,6 +769,33 @@ and the repository exists.
 <p>—— Because of C++ design goals you need to do the checking to see if you can call the member function. Change your code to <code>if (ptr) ptr-&gt;print();</code>. (On my system, the OP code crashes. Both behaviors comply with undefined behavior.)</p>
 <p>—— In general compilers allow you to call methods on null pointers as long as those methods are non-virtual and don't access any members.</p>
 <p>—— "Why does the standard not prohibit this?" - It does by saying that dereferencing a pointer that doesn't point to a live object(here is <code>this</code>, i.e. call <code>ptr-&gt;print()</code> is <code>(*this).print()</code>) has undefined behavior (or something like that).</p>
+</details>
+<h3 id="stdweak_ptr"><code>std::weak_ptr</code><a class="headerlink" href="#stdweak_ptr" title="Permanent link">&para;</a></h3>
+<details class="info">
+<summary>循环引用带来的问题</summary>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Alice</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">Bob</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ptr</span><span class="p">;</span>
+<span class="w">    </span><span class="o">~</span><span class="n">Alice</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Alice Destructed&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Bob</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">Alice</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ptr</span><span class="p">;</span>
+<span class="w">    </span><span class="o">~</span><span class="n">Bob</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Bob Destructed&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">Alice</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">Bob</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="n">a</span><span class="o">-&gt;</span><span class="n">ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="w">    </span><span class="n">b</span><span class="o">-&gt;</span><span class="n">ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><img alt="image-20230312223513386" src="../lab1.assets/image-20230312223513386.png" /></p>
+<p>运行结果是 A, B 都不会被销毁，这是因为 a,b 内部的 pointer 同时又引用了 a,b，这使得 a,b 的引用计数均变为了 2，而离开作用域时，a,b 智能指针被析构，却只能造成这块区域的引用计数减一，这样就导致了 a,b 对象指向的内存区域引用计数不为零，而外部已经没有办法找到这块区域了，也就造成了内存泄露。</p>
+<p><strong>如果在 ~Alice, ~Bob 中加入对当前指针的 reset，能不能修复？</strong></p>
+<p>不能，症结在于引用计数不会降低到 0，也就不会执行析构函数，即使 reset 也不会让析构函数执行。</p>
 </details>
 
 
