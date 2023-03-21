@@ -9,7 +9,7 @@
       
       
       
-        <link rel="prev" href="../../..">
+        <link rel="prev" href="../../../%E6%95%B0%E6%8D%AE%E5%BA%93/chap3/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -225,6 +225,83 @@
 
   
   
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          数据库
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          数据库
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E6%95%B0%E6%8D%AE%E5%BA%93/chap1/" class="md-nav__link">
+        Chap1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E6%95%B0%E6%8D%AE%E5%BA%93/chap2/" class="md-nav__link">
+        Chap2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E6%95%B0%E6%8D%AE%E5%BA%93/chap3/" class="md-nav__link">
+        Chap3
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
     
   
   
@@ -234,17 +311,17 @@
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
       
       
       
-        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
           计算机图形学
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
-        <label class="md-nav__title" for="__nav_2">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3">
           <span class="md-nav__icon md-icon"></span>
           计算机图形学
         </label>
@@ -263,17 +340,17 @@
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
       
       
       
-        <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+        <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
           实验
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
-        <label class="md-nav__title" for="__nav_2_1">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3_1">
           <span class="md-nav__icon md-icon"></span>
           实验
         </label>
@@ -795,8 +872,41 @@ and the repository exists.
 <p><img alt="image-20230312223513386" src="../lab1.assets/image-20230312223513386.png" /></p>
 <p>运行结果是 A, B 都不会被销毁，这是因为 a,b 内部的 pointer 同时又引用了 a,b，这使得 a,b 的引用计数均变为了 2，而离开作用域时，a,b 智能指针被析构，却只能造成这块区域的引用计数减一，这样就导致了 a,b 对象指向的内存区域引用计数不为零，而外部已经没有办法找到这块区域了，也就造成了内存泄露。</p>
 <p><strong>如果在 ~Alice, ~Bob 中加入对当前指针的 reset，能不能修复？</strong></p>
-<p>不能，症结在于引用计数不会降低到 0，也就不会执行析构函数，即使 reset 也不会让析构函数执行。</p>
+<p>不能，症结在于引用计数不会降低到 0，也就不会执行析构函数，即使写一个 reset 也不会让析构函数执行，也就根本不会执行到 reset。</p>
 </details>
+<p><code>std::weak_ptr</code> 是一种弱引用，不会增加管理对象的引用计数。像这种循环引用，一方是强引用、一方是弱引用。</p>
+<p><img alt="image-20230312225031661" src="../lab1.assets/image-20230312225031661.png" /></p>
+<ul>
+<li><code>a</code> 管理 <code>A</code>，<code>A.ptr</code> 管理 <code>B</code>，<code>b</code> 管理 <code>B</code></li>
+<li>释放 <code>a</code>，<code>A</code> 引用计数降到 0</li>
+<li>释放 <code>b</code>，<code>B</code> 引用计数降到 1</li>
+<li>调用 <code>~Alice</code>，<code>A.ptr</code> 也被析构（结束生命周期），<code>B</code> 引用计数降到 0</li>
+<li>调用 <code>~Bob</code>，<code>B</code> 被析构</li>
+</ul>
+<p>现在使用 weak_ptr 来改写 Bob 类：</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Bob</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="n">weak_ptr</span><span class="o">&lt;</span><span class="n">Alice</span><span class="o">&gt;</span><span class="w"> </span><span class="n">ptr</span><span class="p">;</span>
+<span class="w">    </span><span class="o">~</span><span class="n">Bob</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Bob Destructed&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>创建 weak_ptr 是需要 shared_ptr 的：</p>
+<div class="highlight"><pre><span></span><code><span class="k">auto</span><span class="w"> </span><span class="n">AlicePtr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">Alice</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="k">auto</span><span class="w"> </span><span class="n">weakAlice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">weak_ptr</span><span class="o">&lt;</span><span class="n">Alice</span><span class="o">&gt;</span><span class="p">(</span><span class="n">AlicePtr</span><span class="p">);</span>
+<span class="n">BobPtr</span><span class="o">-&gt;</span><span class="n">ptr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">weakAlice</span><span class="p">;</span>
+</code></pre></div>
+<p>此时，打印 use_count，作用域结束后，输出是：</p>
+<div class="highlight"><pre><span></span><code>1
+2
+Alice Destructed
+Bob Destructed
+</code></pre></div>
+<p>说明内存正常释放。</p>
+<ul>
+<li><code>std::weak_ptr</code> 没有 <code>*</code> 运算符和 <code>-&gt;</code> 运算符，所以不能够对资源进行操作；</li>
+<li>可以使用 <code>ptr.expired()</code> 来确认所管理的资源是否失效；</li>
+<li>可以使用 <code>ptr.lock()</code> 获取原来的 shared_ptr，并且 lock 一次不会对引用计数产生影响，除非赋值，比如 <code>auto ppp = ptr.lock();</code>。</li>
+</ul>
 
 
 
