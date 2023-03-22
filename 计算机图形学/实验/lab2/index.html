@@ -1,0 +1,818 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../lab1/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.1">
+    
+    
+      
+        <title>Lab2 - Notes23S</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.402914a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.a0c5b2b5.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://101.ustclug.org/css/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#背景介绍" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="Notes23S" class="md-header__button md-logo" aria-label="Notes23S" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Notes23S
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lab2
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/SproutNan/Notes23S" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    SproutNan/Notes23S
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Notes23S" class="md-nav__button md-logo" aria-label="Notes23S" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Notes23S
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/SproutNan/Notes23S" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    SproutNan/Notes23S
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Homepage
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          数据库
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          数据库
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E6%95%B0%E6%8D%AE%E5%BA%93/chap1/" class="md-nav__link">
+        Chap1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E6%95%B0%E6%8D%AE%E5%BA%93/chap2/" class="md-nav__link">
+        Chap2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E6%95%B0%E6%8D%AE%E5%BA%93/chap3/" class="md-nav__link">
+        Chap3
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          计算机图形学
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          计算机图形学
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+          实验
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          实验
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab1/" class="md-nav__link">
+        Lab1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Lab2
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Lab2
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#背景介绍" class="md-nav__link">
+    背景介绍
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#原理介绍" class="md-nav__link">
+    原理介绍
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matlab-实现-1" class="md-nav__link">
+    Matlab 实现 #1
+  </a>
+  
+    <nav class="md-nav" aria-label="Matlab 实现 #1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#计算-a-矩阵" class="md-nav__link">
+    计算 $A$ 矩阵
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#对每个像素点投影" class="md-nav__link">
+    对每个像素点投影
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#结果" class="md-nav__link">
+    结果
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matlab-实现-2" class="md-nav__link">
+    Matlab 实现 #2
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-的实现有-bug因为原图片-im-在-im2-上投不满所以造成白线解决思路" class="md-nav__link">
+    1 的实现有 Bug，因为原图片 im 在 im2 上投不满，所以造成白线，解决思路：
+  </a>
+  
+    <nav class="md-nav" aria-label="1 的实现有 Bug，因为原图片 im 在 im2 上投不满，所以造成白线，解决思路：">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#结果_1" class="md-nav__link">
+    结果
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#其他想说的" class="md-nav__link">
+    其他想说的
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#背景介绍" class="md-nav__link">
+    背景介绍
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#原理介绍" class="md-nav__link">
+    原理介绍
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matlab-实现-1" class="md-nav__link">
+    Matlab 实现 #1
+  </a>
+  
+    <nav class="md-nav" aria-label="Matlab 实现 #1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#计算-a-矩阵" class="md-nav__link">
+    计算 $A$ 矩阵
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#对每个像素点投影" class="md-nav__link">
+    对每个像素点投影
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#结果" class="md-nav__link">
+    结果
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matlab-实现-2" class="md-nav__link">
+    Matlab 实现 #2
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-的实现有-bug因为原图片-im-在-im2-上投不满所以造成白线解决思路" class="md-nav__link">
+    1 的实现有 Bug，因为原图片 im 在 im2 上投不满，所以造成白线，解决思路：
+  </a>
+  
+    <nav class="md-nav" aria-label="1 的实现有 Bug，因为原图片 im 在 im2 上投不满，所以造成白线，解决思路：">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#结果_1" class="md-nav__link">
+    结果
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#其他想说的" class="md-nav__link">
+    其他想说的
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h2 id="背景介绍">背景介绍<a class="headerlink" href="#背景介绍" title="Permanent link">&para;</a></h2>
+<p><img alt="image-20230322103709440" src="../lab2.assets/image-20230322103709440.png" /></p>
+<p>也就是输入一系列源点 $p_i$ 和终点 $q_i$，让源点移动到终点的位置，并且其他点受形变影响产生畸变。这里 $p_i,q_i\in\text{int}^{1\times2}$。</p>
+<h2 id="原理介绍">原理介绍<a class="headerlink" href="#原理介绍" title="Permanent link">&para;</a></h2>
+<p><strong>Radial basis function interpolation method (RBF)</strong>: Nur Arad and Daniel Reisfeld. <em>Image Warping Using Few Anchor Points and Radial Functions</em>. Computer Graphics Forum, 14(1): 35-46, 1995.</p>
+<p>注：根据老师的讲解，这里的原理和文档上的有区别。</p>
+<p>映射函数 $\displaystyle f(x)=\sum_{i=1}^na_ib_i(x)\quad b_i(x)=\frac{1}{|x-p_i|^2+d}$</p>
+<blockquote>
+<p>$x$：表示一个像素的 $[x_p,y_p]$ 值</p>
+<p>$a_i$：一列待定变量，是 $\text{double}^{1\times 2} $ 的</p>
+<p>$b_i(·)$：是一个标量，其中 $d$ 是常数</p>
+</blockquote>
+<p>为了解出 $f(x)$，需要求解方程组：
+$$
+f(p_i)=q_i-p_i,\quad i=1,...,n
+$$
+可以写成矩阵形式：
+$$
+\begin{bmatrix}
+ b_1(p_1) &amp; ... &amp; b_n(p_1)\
+ \vdots  &amp; \ddots  &amp; \vdots \
+ b_1(p_n) &amp; ... &amp; b_n(p_n)
+\end{bmatrix}
+\begin{bmatrix}
+ a_1\
+ \vdots\
+ a_n
+\end{bmatrix}=
+\begin{bmatrix}
+ q_1-p_1\
+ \vdots\
+ q_n-p_n
+\end{bmatrix}
+$$
+记为 $BA=Q-P$，求解这个线性方程组即可得到 $A$，也就是解出了映射。注意到这里的 $B$ 其实是对称的矩阵，即 $b_i(p_j)=b_j(p_i)$。</p>
+<p>随后，对于每个像素位置 $[i,j]$，其偏移量为 $f([i,j])$，其移动的目标位置为
+$$
+[i,j]+f([i,j])
+$$</p>
+<h2 id="matlab-实现-1">Matlab 实现 #1<a class="headerlink" href="#matlab-实现-1" title="Permanent link">&para;</a></h2>
+<h3 id="计算-a-矩阵">计算 $A$ 矩阵<a class="headerlink" href="#计算-a-矩阵" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c">%% critical: 图形遍历是先高后宽，所以把 x,y 互换一下</span>
+<span class="n">psrc</span><span class="p">(:,[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">psrc</span><span class="p">(:,[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]);</span>
+<span class="n">pdst</span><span class="p">(:,[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">pdst</span><span class="p">(:,[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]);</span>
+
+<span class="n">dists</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">pdist2</span><span class="p">(</span><span class="n">psrc</span><span class="p">,</span><span class="w"> </span><span class="n">psrc</span><span class="p">)</span><span class="o">.^</span><span class="mi">2</span><span class="p">;</span><span class="w">      </span><span class="c">%% 使用 pdist2 函数计算欧氏距离</span>
+<span class="n">bp_map</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">./</span><span class="w"> </span><span class="p">(</span><span class="n">dists</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">d</span><span class="p">);</span><span class="w">              </span><span class="c">%% ./ 表示在每个元素上操作</span>
+<span class="n">A</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">bp_map</span><span class="w"> </span><span class="o">\</span><span class="w"> </span><span class="p">(</span><span class="n">pdst</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">psrc</span><span class="p">);</span><span class="w">             </span><span class="c">%% 使用 \ 直接求解线性方程组</span>
+</code></pre></div>
+<h3 id="对每个像素点投影">对每个像素点投影<a class="headerlink" href="#对每个像素点投影" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="n">h</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nb">j</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="n">w</span>
+<span class="w">            </span><span class="c">%% 对于 im 图像中每个像素点位置 x = [i,j]</span>
+<span class="w">        </span><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="nb">i</span><span class="p">,</span><span class="w"> </span><span class="nb">j</span><span class="p">];</span>
+<span class="w">        </span><span class="c">%% 计算所有的 bi(x)</span>
+<span class="w">        </span><span class="n">b</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">./</span><span class="w"> </span><span class="p">(</span><span class="n">pdist2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">psrc</span><span class="p">)</span><span class="o">.^</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">d</span><span class="p">);</span>
+<span class="w">        </span><span class="c">%% 直接相乘得到 f(x)</span>
+<span class="w">        </span><span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">A</span><span class="p">;</span>
+<span class="w">        </span><span class="c">%% 获得 x 变换后的坐标 [ii,jj]</span>
+<span class="w">        </span><span class="n">ii</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">ceil</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">i</span><span class="p">;</span>
+<span class="w">        </span><span class="n">jj</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">ceil</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">j</span><span class="p">;</span>
+<span class="w">        </span><span class="c">%% 获得 [ii,jj] 后，把其颜色改成原节点的</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ii</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">ii</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">jj</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">jj</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">w</span><span class="p">)</span>
+<span class="w">            </span><span class="n">im2</span><span class="p">(</span><span class="n">ii</span><span class="p">,</span><span class="w"> </span><span class="n">jj</span><span class="p">,</span><span class="w"> </span><span class="p">:)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">im</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="w"> </span><span class="nb">j</span><span class="p">,</span><span class="w"> </span><span class="p">:);</span>
+<span class="w">        </span><span class="k">end</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div>
+<h3 id="结果">结果<a class="headerlink" href="#结果" title="Permanent link">&para;</a></h3>
+<p>适用范围与 $d$ 有关，$d$ 小可以做精细调整，$d$ 大可以做大范围的调整。实际上如果取 $d$ 与源汇的最远距离有关，可以做到自适应。不过这里还是选 $d$ 是个常数。</p>
+<p><img alt="image-20230322144111542" src="../lab2.assets/image-20230322144111542.png" /></p>
+<h2 id="matlab-实现-2">Matlab 实现 #2<a class="headerlink" href="#matlab-实现-2" title="Permanent link">&para;</a></h2>
+<h1 id="1-的实现有-bug因为原图片-im-在-im2-上投不满所以造成白线解决思路">1 的实现有 Bug，因为原图片 im 在 im2 上投不满，所以造成白线，解决思路：<a class="headerlink" href="#1-的实现有-bug因为原图片-im-在-im2-上投不满所以造成白线解决思路" title="Permanent link">&para;</a></h1>
+<ul>
+<li>生成图像之后，让白色的像素颜色等于其最近的非白色像素颜色</li>
+<li>使用后向投影，即让 im2 的每个像素去 im 中找应该等于什么颜色</li>
+</ul>
+<p>这里记录一下后向投影的做法。假设我们已经得到了映射 $f$，我们希望对 im2 的每个位置 $[i,j]$ 找到 im 中的结果，也就是解方程
+$$
+f(x)+x=[i,j]
+$$
+解这个方程的开销相当大（非线性，需要用工具库计算），让我们来看看 ChatGPT 贡献的一种解法：</p>
+<p>定义 $S=\begin{bmatrix}
+ 1 &amp; ... &amp; 1\
+ \vdots &amp; \cdots &amp; \vdots\
+ h &amp; ... &amp; h
+\end{bmatrix}\in\text{int}^{h\times w}$，$D=\begin{bmatrix}
+ 1 &amp; ... &amp; w\
+ \vdots &amp; \cdots &amp; \vdots\
+ 1 &amp; ... &amp; w
+\end{bmatrix}\in\text{int}^{h\times w}$，然后，创建了两个矩阵 $F_1,F_2\in\text{double}^{h\times w}$，初始化为全 0，然后，对于遍历变量 $k\in [1:n]$：</p>
+<ul>
+<li>计算矩阵 $\displaystyle\tilde Q_{ijk}=\frac{1}{|[i,j]-p_k|^2+d}$，上面定义的 $S,D$ 会让 Matlab 代码好写一点</li>
+<li>$\displaystyle F_1=\sum_{k=1}^na_{k1}\tilde Q_k$，$\displaystyle F_2=\sum_{k=1}^na_{k2}\tilde{Q}_k$</li>
+<li>$F_1=F_1+S$，$F_2=F_2+D$，然后把坐标都取整</li>
+</ul>
+<p>这样，对于 im2 中的位置 $[i,j]$，其在 im 中的色彩来源是 $[(F_1)<em ij="ij">{ij},(F_2)</em>]$。</p>
+<p>如果 $[(F_1)<em ij="ij">{ij},(F_2)</em>]$ 溢出了 $h\times w$ 范围，则填补黑色。</p>
+<p>代码如下：</p>
+<div class="highlight"><pre><span></span><code><span class="n">dists</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">pdist2</span><span class="p">(</span><span class="n">pdst</span><span class="p">,</span><span class="w"> </span><span class="n">pdst</span><span class="p">)</span><span class="o">.^</span><span class="mi">2</span><span class="p">;</span>
+<span class="n">bp_map</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">./</span><span class="w"> </span><span class="p">(</span><span class="n">dists</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">d</span><span class="p">);</span>
+<span class="n">A</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">bp_map</span><span class="w"> </span><span class="o">\</span><span class="w"> </span><span class="p">(</span><span class="n">psrc</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">pdst</span><span class="p">);</span>
+
+<span class="n">src</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">transpose</span><span class="p">(</span><span class="nb">meshgrid</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">h</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="n">w</span><span class="p">));</span>
+<span class="n">dst</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">meshgrid</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">w</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="n">h</span><span class="p">);</span>
+
+<span class="n">rever_f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+<span class="k">for</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="n">n</span>
+<span class="w">    </span><span class="n">q</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">./</span><span class="w"> </span><span class="p">((</span><span class="n">src</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">pdst</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="o">.^</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">dst</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">pdst</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span><span class="o">.^</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">d</span><span class="p">);</span>
+<span class="w">    </span><span class="n">rever_f</span><span class="p">(:,:,</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">rever_f</span><span class="p">(:,:,</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">q</span><span class="p">;</span>
+<span class="w">    </span><span class="n">rever_f</span><span class="p">(:,:,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">rever_f</span><span class="p">(:,:,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">q</span><span class="p">;</span>
+<span class="k">end</span>
+<span class="n">rever_f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">round</span><span class="p">(</span><span class="n">rever_f</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">cat</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">src</span><span class="p">,</span><span class="w"> </span><span class="n">dst</span><span class="p">));</span>
+
+<span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="n">h</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nb">j</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="n">w</span>
+<span class="w">        </span><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">rever_f</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="w"> </span><span class="nb">j</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">        </span><span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">rever_f</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="w"> </span><span class="nb">j</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">w</span>
+<span class="w">            </span><span class="n">im2</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="nb">j</span><span class="p">,:)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">];</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="w">            </span><span class="n">im2</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="nb">j</span><span class="p">,:)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">im</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="p">:);</span>
+<span class="w">        </span><span class="k">end</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div>
+<h3 id="结果_1">结果<a class="headerlink" href="#结果_1" title="Permanent link">&para;</a></h3>
+<p>没有白条纹出现。</p>
+<p><img alt="image-20230322190539079" src="../lab2.assets/image-20230322190539079.png" /></p>
+<h2 id="其他想说的">其他想说的<a class="headerlink" href="#其他想说的" title="Permanent link">&para;</a></h2>
+<p>可恶，怎么第二次实验开始就 Matlab 了</p>
+<p>实验结束后，尝试用 C++ opencv 库进行框架搭建，和 Python 上的版本也差不多，OK 那这个实验对 C++ 的贡献就是让我知道了 C++ 也可以方便地使用 opencv）</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.b78d2936.min.js"></script>
+      
+        <script src="../../../mathjax-config.js"></script>
+      
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      
+        <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+      
+    
+  </body>
+</html>
