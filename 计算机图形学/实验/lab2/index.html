@@ -428,8 +428,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#计算-a-矩阵" class="md-nav__link">
-    计算 $A$ 矩阵
+  <a href="#计算-aa-矩阵" class="md-nav__link">
+    计算 AA 矩阵
   </a>
   
 </li>
@@ -458,14 +458,7 @@
     Matlab 实现 #2
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1-的实现有-bug因为原图片-im-在-im2-上投不满所以造成白线解决思路" class="md-nav__link">
-    1 的实现有 Bug，因为原图片 im 在 im2 上投不满，所以造成白线，解决思路：
-  </a>
-  
-    <nav class="md-nav" aria-label="1 的实现有 Bug，因为原图片 im 在 im2 上投不满，所以造成白线，解决思路：">
+    <nav class="md-nav" aria-label="Matlab 实现 #2">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -475,15 +468,15 @@
   
 </li>
         
-          <li class="md-nav__item">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#其他想说的" class="md-nav__link">
     其他想说的
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -556,8 +549,8 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#计算-a-矩阵" class="md-nav__link">
-    计算 $A$ 矩阵
+  <a href="#计算-aa-矩阵" class="md-nav__link">
+    计算 AA 矩阵
   </a>
   
 </li>
@@ -586,14 +579,7 @@
     Matlab 实现 #2
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1-的实现有-bug因为原图片-im-在-im2-上投不满所以造成白线解决思路" class="md-nav__link">
-    1 的实现有 Bug，因为原图片 im 在 im2 上投不满，所以造成白线，解决思路：
-  </a>
-  
-    <nav class="md-nav" aria-label="1 的实现有 Bug，因为原图片 im 在 im2 上投不满，所以造成白线，解决思路：">
+    <nav class="md-nav" aria-label="Matlab 实现 #2">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -603,15 +589,15 @@
   
 </li>
         
-          <li class="md-nav__item">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#其他想说的" class="md-nav__link">
     其他想说的
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -633,19 +619,21 @@
   
 
 
+  <h1>Lab2</h1>
+
 <h2 id="背景介绍">背景介绍<a class="headerlink" href="#背景介绍" title="Permanent link">&para;</a></h2>
 <p><img alt="image-20230322103709440" src="../lab2.assets/image-20230322103709440.png" /></p>
-<p>也就是输入一系列源点 $p_i$ 和终点 $q_i$，让源点移动到终点的位置，并且其他点受形变影响产生畸变。这里 $p_i,q_i\in\text{int}^{1\times2}$。</p>
+<p>也就是输入一系列源点 <span class="arithmatex"><span class="MathJax_Preview">p_i</span><script type="math/tex">p_i</script></span> 和终点 <span class="arithmatex"><span class="MathJax_Preview">q_i</span><script type="math/tex">q_i</script></span>，让源点移动到终点的位置，并且其他点受形变影响产生畸变。这里 <span class="arithmatex"><span class="MathJax_Preview">p_i,q_i\in\text{int}^{1\times2}</span><script type="math/tex">p_i,q_i\in\text{int}^{1\times2}</script></span>。</p>
 <h2 id="原理介绍">原理介绍<a class="headerlink" href="#原理介绍" title="Permanent link">&para;</a></h2>
 <p><strong>Radial basis function interpolation method (RBF)</strong>: Nur Arad and Daniel Reisfeld. <em>Image Warping Using Few Anchor Points and Radial Functions</em>. Computer Graphics Forum, 14(1): 35-46, 1995.</p>
 <p>注：根据老师的讲解，这里的原理和文档上的有区别。</p>
-<p>映射函数 $\displaystyle f(x)=\sum_{i=1}^na_ib_i(x)\quad b_i(x)=\frac{1}{|x-p_i|^2+d}$</p>
+<p>映射函数 <span class="arithmatex"><span class="MathJax_Preview">\displaystyle f(x)=\sum_{i=1}^na_ib_i(x)\quad b_i(x)=\frac{1}{|x-p_i|^2+d}</span><script type="math/tex">\displaystyle f(x)=\sum_{i=1}^na_ib_i(x)\quad b_i(x)=\frac{1}{|x-p_i|^2+d}</script></span></p>
 <blockquote>
-<p>$x$：表示一个像素的 $[x_p,y_p]$ 值</p>
-<p>$a_i$：一列待定变量，是 $\text{double}^{1\times 2} $ 的</p>
-<p>$b_i(·)$：是一个标量，其中 $d$ 是常数</p>
+<p><span class="arithmatex"><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span>：表示一个像素的 <span class="arithmatex"><span class="MathJax_Preview">[x_p,y_p]</span><script type="math/tex">[x_p,y_p]</script></span> 值</p>
+<p><span class="arithmatex"><span class="MathJax_Preview">a_i</span><script type="math/tex">a_i</script></span>：一列待定变量，是 $\text{double}^{1\times 2} $ 的</p>
+<p><span class="arithmatex"><span class="MathJax_Preview">b_i(·)</span><script type="math/tex">b_i(·)</script></span>：是一个标量，其中 <span class="arithmatex"><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span> 是常数</p>
 </blockquote>
-<p>为了解出 $f(x)$，需要求解方程组：
+<p>为了解出 <span class="arithmatex"><span class="MathJax_Preview">f(x)</span><script type="math/tex">f(x)</script></span>，需要求解方程组：
 $$
 f(p_i)=q_i-p_i,\quad i=1,...,n
 $$
@@ -667,13 +655,13 @@ $$
  q_n-p_n
 \end{bmatrix}
 $$
-记为 $BA=Q-P$，求解这个线性方程组即可得到 $A$，也就是解出了映射。注意到这里的 $B$ 其实是对称的矩阵，即 $b_i(p_j)=b_j(p_i)$。</p>
-<p>随后，对于每个像素位置 $[i,j]$，其偏移量为 $f([i,j])$，其移动的目标位置为
+记为 <span class="arithmatex"><span class="MathJax_Preview">BA=Q-P</span><script type="math/tex">BA=Q-P</script></span>，求解这个线性方程组即可得到 <span class="arithmatex"><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>，也就是解出了映射。注意到这里的 <span class="arithmatex"><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span> 其实是对称的矩阵，即 <span class="arithmatex"><span class="MathJax_Preview">b_i(p_j)=b_j(p_i)</span><script type="math/tex">b_i(p_j)=b_j(p_i)</script></span>。</p>
+<p>随后，对于每个像素位置 <span class="arithmatex"><span class="MathJax_Preview">[i,j]</span><script type="math/tex">[i,j]</script></span>，其偏移量为 <span class="arithmatex"><span class="MathJax_Preview">f([i,j])</span><script type="math/tex">f([i,j])</script></span>，其移动的目标位置为
 $$
 [i,j]+f([i,j])
 $$</p>
 <h2 id="matlab-实现-1">Matlab 实现 #1<a class="headerlink" href="#matlab-实现-1" title="Permanent link">&para;</a></h2>
-<h3 id="计算-a-矩阵">计算 $A$ 矩阵<a class="headerlink" href="#计算-a-矩阵" title="Permanent link">&para;</a></h3>
+<h3 id="计算-aa-矩阵">计算 <span class="arithmatex"><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> 矩阵<a class="headerlink" href="#计算-aa-矩阵" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c">%% critical: 图形遍历是先高后宽，所以把 x,y 互换一下</span>
 <span class="n">psrc</span><span class="p">(:,[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">psrc</span><span class="p">(:,[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]);</span>
 <span class="n">pdst</span><span class="p">(:,[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">pdst</span><span class="p">(:,[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]);</span>
@@ -702,35 +690,43 @@ $$</p>
 <span class="k">end</span>
 </code></pre></div>
 <h3 id="结果">结果<a class="headerlink" href="#结果" title="Permanent link">&para;</a></h3>
-<p>适用范围与 $d$ 有关，$d$ 小可以做精细调整，$d$ 大可以做大范围的调整。实际上如果取 $d$ 与源汇的最远距离有关，可以做到自适应。不过这里还是选 $d$ 是个常数。</p>
+<p>适用范围与 <span class="arithmatex"><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span> 有关，<span class="arithmatex"><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span> 小可以做精细调整，<span class="arithmatex"><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span> 大可以做大范围的调整。实际上如果取 <span class="arithmatex"><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span> 与源汇的最远距离有关，可以做到自适应。不过这里还是选 <span class="arithmatex"><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span> 是个常数。</p>
 <p><img alt="image-20230322144111542" src="../lab2.assets/image-20230322144111542.png" /></p>
 <h2 id="matlab-实现-2">Matlab 实现 #2<a class="headerlink" href="#matlab-实现-2" title="Permanent link">&para;</a></h2>
-<h1 id="1-的实现有-bug因为原图片-im-在-im2-上投不满所以造成白线解决思路">1 的实现有 Bug，因为原图片 im 在 im2 上投不满，所以造成白线，解决思路：<a class="headerlink" href="#1-的实现有-bug因为原图片-im-在-im2-上投不满所以造成白线解决思路" title="Permanent link">&para;</a></h1>
+<p>上面的实现有 Bug，因为原图片 im 在 im2 上投不满，所以造成白线，解决思路：</p>
 <ul>
 <li>生成图像之后，让白色的像素颜色等于其最近的非白色像素颜色</li>
 <li>使用后向投影，即让 im2 的每个像素去 im 中找应该等于什么颜色</li>
 </ul>
-<p>这里记录一下后向投影的做法。假设我们已经得到了映射 $f$，我们希望对 im2 的每个位置 $[i,j]$ 找到 im 中的结果，也就是解方程
+<p>这里记录一下后向投影的做法。假设我们已经得到了映射 <span class="arithmatex"><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span>，我们希望对 im2 的每个位置 <span class="arithmatex"><span class="MathJax_Preview">[i,j]</span><script type="math/tex">[i,j]</script></span> 找到 im 中的结果，也就是解方程
 $$
 f(x)+x=[i,j]
 $$
 解这个方程的开销相当大（非线性，需要用工具库计算），让我们来看看 ChatGPT 贡献的一种解法：</p>
-<p>定义 $S=\begin{bmatrix}
- 1 &amp; ... &amp; 1\
- \vdots &amp; \cdots &amp; \vdots\
+<p>定义 <span class="arithmatex"><span class="MathJax_Preview">S=\begin{bmatrix}
+ 1 &amp; ... &amp; 1\\
+ \vdots &amp; \cdots &amp; \vdots\\
  h &amp; ... &amp; h
-\end{bmatrix}\in\text{int}^{h\times w}$，$D=\begin{bmatrix}
- 1 &amp; ... &amp; w\
- \vdots &amp; \cdots &amp; \vdots\
+\end{bmatrix}\in\text{int}^{h\times w}</span><script type="math/tex">S=\begin{bmatrix}
+ 1 & ... & 1\\
+ \vdots & \cdots & \vdots\\
+ h & ... & h
+\end{bmatrix}\in\text{int}^{h\times w}</script></span>，<span class="arithmatex"><span class="MathJax_Preview">D=\begin{bmatrix}
+ 1 &amp; ... &amp; w\\
+ \vdots &amp; \cdots &amp; \vdots\\
  1 &amp; ... &amp; w
-\end{bmatrix}\in\text{int}^{h\times w}$，然后，创建了两个矩阵 $F_1,F_2\in\text{double}^{h\times w}$，初始化为全 0，然后，对于遍历变量 $k\in [1:n]$：</p>
+\end{bmatrix}\in\text{int}^{h\times w}</span><script type="math/tex">D=\begin{bmatrix}
+ 1 & ... & w\\
+ \vdots & \cdots & \vdots\\
+ 1 & ... & w
+\end{bmatrix}\in\text{int}^{h\times w}</script></span>，然后，创建了两个矩阵 <span class="arithmatex"><span class="MathJax_Preview">F_1,F_2\in\text{double}^{h\times w}</span><script type="math/tex">F_1,F_2\in\text{double}^{h\times w}</script></span>，初始化为全 0，然后，对于遍历变量 <span class="arithmatex"><span class="MathJax_Preview">k\in [1:n]</span><script type="math/tex">k\in [1:n]</script></span>：</p>
 <ul>
-<li>计算矩阵 $\displaystyle\tilde Q_{ijk}=\frac{1}{|[i,j]-p_k|^2+d}$，上面定义的 $S,D$ 会让 Matlab 代码好写一点</li>
-<li>$\displaystyle F_1=\sum_{k=1}^na_{k1}\tilde Q_k$，$\displaystyle F_2=\sum_{k=1}^na_{k2}\tilde{Q}_k$</li>
-<li>$F_1=F_1+S$，$F_2=F_2+D$，然后把坐标都取整</li>
+<li>计算矩阵 <span class="arithmatex"><span class="MathJax_Preview">\displaystyle\tilde Q_{ijk}=\frac{1}{|[i,j]-p_k|^2+d}</span><script type="math/tex">\displaystyle\tilde Q_{ijk}=\frac{1}{|[i,j]-p_k|^2+d}</script></span>，上面定义的 <span class="arithmatex"><span class="MathJax_Preview">S,D</span><script type="math/tex">S,D</script></span> 会让 Matlab 代码好写一点</li>
+<li><span class="arithmatex"><span class="MathJax_Preview">\displaystyle F_1=\sum_{k=1}^na_{k1}\tilde Q_k</span><script type="math/tex">\displaystyle F_1=\sum_{k=1}^na_{k1}\tilde Q_k</script></span>，<span class="arithmatex"><span class="MathJax_Preview">\displaystyle F_2=\sum_{k=1}^na_{k2}\tilde{Q}_k</span><script type="math/tex">\displaystyle F_2=\sum_{k=1}^na_{k2}\tilde{Q}_k</script></span></li>
+<li><span class="arithmatex"><span class="MathJax_Preview">F_1=F_1+S</span><script type="math/tex">F_1=F_1+S</script></span>，<span class="arithmatex"><span class="MathJax_Preview">F_2=F_2+D</span><script type="math/tex">F_2=F_2+D</script></span>，然后把坐标都取整</li>
 </ul>
-<p>这样，对于 im2 中的位置 $[i,j]$，其在 im 中的色彩来源是 $[(F_1)<em ij="ij">{ij},(F_2)</em>]$。</p>
-<p>如果 $[(F_1)<em ij="ij">{ij},(F_2)</em>]$ 溢出了 $h\times w$ 范围，则填补黑色。</p>
+<p>这样，对于 im2 中的位置 <span class="arithmatex"><span class="MathJax_Preview">[i,j]</span><script type="math/tex">[i,j]</script></span>，其在 im 中的色彩来源是 <span class="arithmatex"><span class="MathJax_Preview">[(F_1)_{ij},(F_2)_{ij}]</span><script type="math/tex">[(F_1)_{ij},(F_2)_{ij}]</script></span>。</p>
+<p>如果 <span class="arithmatex"><span class="MathJax_Preview">[(F_1)_{ij},(F_2)_{ij}]</span><script type="math/tex">[(F_1)_{ij},(F_2)_{ij}]</script></span> 溢出了 <span class="arithmatex"><span class="MathJax_Preview">h\times w</span><script type="math/tex">h\times w</script></span> 范围，则填补黑色。</p>
 <p>代码如下：</p>
 <div class="highlight"><pre><span></span><code><span class="n">dists</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">pdist2</span><span class="p">(</span><span class="n">pdst</span><span class="p">,</span><span class="w"> </span><span class="n">pdst</span><span class="p">)</span><span class="o">.^</span><span class="mi">2</span><span class="p">;</span>
 <span class="n">bp_map</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">./</span><span class="w"> </span><span class="p">(</span><span class="n">dists</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">d</span><span class="p">);</span>

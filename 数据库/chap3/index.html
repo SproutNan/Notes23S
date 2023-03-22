@@ -940,22 +940,22 @@
 <p><strong>关系数据库模式(Relational Database Schema)</strong>：关系模式的集合</p>
 <p><strong>关系数据库</strong>：关系数据库模式的实例</p>
 <h3 id="关系模式的形式化定义">关系模式的形式化定义<a class="headerlink" href="#关系模式的形式化定义" title="Permanent link">&para;</a></h3>
-<p>$R(U,D,dom,F)$</p>
+<p><span class="arithmatex"><span class="MathJax_Preview">R(U,D,dom,F)</span><script type="math/tex">R(U,D,dom,F)</script></span></p>
 <ul>
-<li>$R$ 是关系模式名</li>
-<li>$U$ 是属性集合</li>
-<li>$D$ 是 $U$ 中属性的值来自的域</li>
-<li>$Dom$：${f|f:U\rightarrow D}$ 属性向域的映射集合</li>
-<li>$F$ 是属性间的依赖关系</li>
+<li><span class="arithmatex"><span class="MathJax_Preview">R</span><script type="math/tex">R</script></span> 是关系模式名</li>
+<li><span class="arithmatex"><span class="MathJax_Preview">U</span><script type="math/tex">U</script></span> 是属性集合</li>
+<li><span class="arithmatex"><span class="MathJax_Preview">D</span><script type="math/tex">D</script></span> 是 <span class="arithmatex"><span class="MathJax_Preview">U</span><script type="math/tex">U</script></span> 中属性的值来自的域</li>
+<li><span class="arithmatex"><span class="MathJax_Preview">Dom</span><script type="math/tex">Dom</script></span>：<span class="arithmatex"><span class="MathJax_Preview">\{f|f:U\rightarrow D\}</span><script type="math/tex">\{f|f:U\rightarrow D\}</script></span> 属性向域的映射集合</li>
+<li><span class="arithmatex"><span class="MathJax_Preview">F</span><script type="math/tex">F</script></span> 是属性间的依赖关系</li>
 </ul>
-<p>举例：$Student(U,D,dom,F)$</p>
+<p>举例：<span class="arithmatex"><span class="MathJax_Preview">Student(U,D,dom,F)</span><script type="math/tex">Student(U,D,dom,F)</script></span></p>
 <ul>
-<li>$U={\text{stuID, name, age}}$</li>
-<li>$D={\text{char},\text{int}}$</li>
-<li>$Dom={do m(\text{stuID})=dom(\text{name})=\text{char},dom(\text{age})=\text{int}}$</li>
-<li>$F={\text{stuID}\rightarrow \text{name},\text{stuID}\rightarrow \text{age}}$</li>
+<li><span class="arithmatex"><span class="MathJax_Preview">U=\{\text{stuID, name, age}\}</span><script type="math/tex">U=\{\text{stuID, name, age}\}</script></span></li>
+<li><span class="arithmatex"><span class="MathJax_Preview">D=\{\text{char},\text{int}\}</span><script type="math/tex">D=\{\text{char},\text{int}\}</script></span></li>
+<li><span class="arithmatex"><span class="MathJax_Preview">Dom=\{do m(\text{stuID})=dom(\text{name})=\text{char},dom(\text{age})=\text{int}\}</span><script type="math/tex">Dom=\{do m(\text{stuID})=dom(\text{name})=\text{char},dom(\text{age})=\text{int}\}</script></span></li>
+<li><span class="arithmatex"><span class="MathJax_Preview">F=\{\text{stuID}\rightarrow \text{name},\text{stuID}\rightarrow \text{age}\}</span><script type="math/tex">F=\{\text{stuID}\rightarrow \text{name},\text{stuID}\rightarrow \text{age}\}</script></span></li>
 </ul>
-<p>关系模式通常简写为 $R(U),R(u_1,u_2,...),R$</p>
+<p>关系模式通常简写为 <span class="arithmatex"><span class="MathJax_Preview">R(U),R(u_1,u_2,...),R</span><script type="math/tex">R(U),R(u_1,u_2,...),R</script></span></p>
 <h3 id="超码候选码主码">超码、候选码、主码<a class="headerlink" href="#超码候选码主码" title="Permanent link">&para;</a></h3>
 <p><strong>超码 (Super Key)</strong></p>
 <ul>
@@ -998,43 +998,43 @@
 <p>参照关系 R 的外码可以为空，否则必须等于被参照关系 S 所参照的候选码的某个值</p>
 <h4 id="用户自定义完整性-user-defined-integrity"><strong>用户自定义完整性 (User-Defined Integrity)</strong><a class="headerlink" href="#用户自定义完整性-user-defined-integrity" title="Permanent link">&para;</a></h4>
 <p>针对某一具体数据的约束条件，反映某一具体应用所涉及的数据必须满足的特殊语义，由应用环境决定</p>
-<p>如：成绩必须 $0\le\text{grade}\le100$</p>
+<p>如：成绩必须 <span class="arithmatex"><span class="MathJax_Preview">0\le\text{grade}\le100</span><script type="math/tex">0\le\text{grade}\le100</script></span></p>
 <h2 id="数据操作关系运算">数据操作：关系运算<a class="headerlink" href="#数据操作关系运算" title="Permanent link">&para;</a></h2>
 <h3 id="关系代数">关系代数<a class="headerlink" href="#关系代数" title="Permanent link">&para;</a></h3>
-<p>代数 $=<A,O>$，$A:$ 一个类型的集合；$O:A$ 上的代数运算集合，需要满足 $A$ 上的封闭性</p>
-<p><strong>关系代数</strong> $=<A,O>$</p>
+<p>代数 <span class="arithmatex"><span class="MathJax_Preview">=&lt;A,O&gt;</span><script type="math/tex">=<A,O></script></span>，<span class="arithmatex"><span class="MathJax_Preview">A:</span><script type="math/tex">A:</script></span> 一个类型的集合；<span class="arithmatex"><span class="MathJax_Preview">O:A</span><script type="math/tex">O:A</script></span> 上的代数运算集合，需要满足 <span class="arithmatex"><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> 上的封闭性</p>
+<p><strong>关系代数</strong> <span class="arithmatex"><span class="MathJax_Preview">=&lt;A,O&gt;</span><script type="math/tex">=<A,O></script></span></p>
 <ul>
-<li>$A$：关系，关系代数中只存在这一种类型</li>
-<li>$O$：关系代数运算，任何关系代数运算的结果仍是关系</li>
+<li><span class="arithmatex"><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>：关系，关系代数中只存在这一种类型</li>
+<li><span class="arithmatex"><span class="MathJax_Preview">O</span><script type="math/tex">O</script></span>：关系代数运算，任何关系代数运算的结果仍是关系</li>
 </ul>
 <h3 id="关系演算">关系演算<a class="headerlink" href="#关系演算" title="Permanent link">&para;</a></h3>
-<p>是元组关系演算、也是域关系演算，因为 $\text{tuple }t=<t_1,...,t_n>$，则元组关系演算可以转化为域关系演算。</p>
+<p>是元组关系演算、也是域关系演算，因为 <span class="arithmatex"><span class="MathJax_Preview">\text{tuple }t=&lt;t_1,...,t_n&gt;</span><script type="math/tex">\text{tuple }t=<t_1,...,t_n></script></span>，则元组关系演算可以转化为域关系演算。</p>
 <h4 id="原始的关系代数传统集合操作">原始的关系代数：传统集合操作<a class="headerlink" href="#原始的关系代数传统集合操作" title="Permanent link">&para;</a></h4>
 <p>（1）<strong>并（Union）</strong>：返回两个关系中所有元组</p>
 <ul>
-<li>$R\cup S={t|t\in R\vee t\in S}$</li>
-<li>$t:$ 元组变量；$R,S:$ 关系代数表达式</li>
-<li>$R,S$ 的 degree 和类型必须相同</li>
+<li><span class="arithmatex"><span class="MathJax_Preview">R\cup S=\{t|t\in R\vee t\in S\}</span><script type="math/tex">R\cup S=\{t|t\in R\vee t\in S\}</script></span></li>
+<li><span class="arithmatex"><span class="MathJax_Preview">t:</span><script type="math/tex">t:</script></span> 元组变量；<span class="arithmatex"><span class="MathJax_Preview">R,S:</span><script type="math/tex">R,S:</script></span> 关系代数表达式</li>
+<li><span class="arithmatex"><span class="MathJax_Preview">R,S</span><script type="math/tex">R,S</script></span> 的 degree 和类型必须相同</li>
 </ul>
 <p><img alt="image-20230321203353985" src="../chap3.assets/image-20230321203353985.png" /></p>
 <p>（2）<strong>交（Intersection）</strong>：返回两个关系共同的元组</p>
 <p>（3）<strong>差（Difference）</strong>：返回属于第一个关系而不属于第二个关系的元组</p>
 <p>（4）<strong>笛卡儿积（Cartesian Product）</strong>：返回两个关系的元组的任意组合所得到的元组集合</p>
 <ul>
-<li>$R\times S={t|t=<t^r,t^s>\wedge t^r\in R\wedge t^s\in S}$</li>
+<li><span class="arithmatex"><span class="MathJax_Preview">R\times S=\{t|t=&lt;t^r,t^s&gt;\wedge t^r\in R\wedge t^s\in S\}</span><script type="math/tex">R\times S=\{t|t=<t^r,t^s>\wedge t^r\in R\wedge t^s\in S\}</script></span></li>
 </ul>
 <p><img alt="image-20230321203537568" src="../chap3.assets/image-20230321203537568.png" /></p>
 <h4 id="原始的关系代数专门的关系操作">原始的关系代数：专门的关系操作<a class="headerlink" href="#原始的关系代数专门的关系操作" title="Permanent link">&para;</a></h4>
 <p>（1）<strong>选择（Select）</strong>：返回指定关系中满足给定条件的元组（按行选择）</p>
 <ul>
-<li>$\sigma_F(R)={t|t\in R\wedge F(t)=\text{true}}$</li>
-<li>$F$ 是一个逻辑表达式，表示所选的元组应满足的条件，由 $\neg,\wedge,\vee$ 连接算术表达式构成</li>
-<li>算术表达式形为 $X\Theta Y,\Theta\in{&gt;,&lt;,=,\le,\ge,\ne},X,Y$ 可以是属性名、常量或简单函数</li>
+<li><span class="arithmatex"><span class="MathJax_Preview">\sigma_F(R)=\{t|t\in R\wedge F(t)=\text{true}\}</span><script type="math/tex">\sigma_F(R)=\{t|t\in R\wedge F(t)=\text{true}\}</script></span></li>
+<li><span class="arithmatex"><span class="MathJax_Preview">F</span><script type="math/tex">F</script></span> 是一个逻辑表达式，表示所选的元组应满足的条件，由 <span class="arithmatex"><span class="MathJax_Preview">\neg,\wedge,\vee</span><script type="math/tex">\neg,\wedge,\vee</script></span> 连接算术表达式构成</li>
+<li>算术表达式形为 <span class="arithmatex"><span class="MathJax_Preview">X\Theta Y,\Theta\in\{&gt;,&lt;,=,\le,\ge,\ne\},X,Y</span><script type="math/tex">X\Theta Y,\Theta\in\{>,<,=,\le,\ge,\ne\},X,Y</script></span> 可以是属性名、常量或简单函数</li>
 </ul>
 <p><img alt="image-20230321204045332" src="../chap3.assets/image-20230321204045332.png" /></p>
 <p>（2）<strong>投影（Project）</strong>：返回指定关系中去掉若干属性后所得的元组</p>
 <ul>
-<li>$\pi_A(R)={t[A]|t\in R}$，这里 $A$ 是 R 的属性子集</li>
+<li><span class="arithmatex"><span class="MathJax_Preview">\pi_A(R)=\{t[A]|t\in R\}</span><script type="math/tex">\pi_A(R)=\{t[A]|t\in R\}</script></span>，这里 <span class="arithmatex"><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> 是 R 的属性子集</li>
 <li>A 中的属性不可重复</li>
 </ul>
 <p><img alt="image-20230321204549593" src="../chap3.assets/image-20230321204549593.png" /></p>
@@ -1042,22 +1042,22 @@
 <p>（3）<strong>连接（Join）</strong>：从两个关系的笛卡儿积中选取属性间满足给定条件的元组</p>
 <p><strong>自然连接</strong></p>
 <ul>
-<li>设 $R$ 的属性集为 ${X,Y}$，$S$ 的属性集为 ${Y,Z}$</li>
-<li>$R\Join S={t|t=<X,Y,Z>\textbf{and }t[X,Y]\in R\textbf{ and }t[Y,Z]\in S}$</li>
-<li>相当于在 $R\times S$ 中选取 R 和 S 的所有公共属性值都相等的元组，并在结果中去掉重复属性</li>
+<li>设 <span class="arithmatex"><span class="MathJax_Preview">R</span><script type="math/tex">R</script></span> 的属性集为 <span class="arithmatex"><span class="MathJax_Preview">\{X,Y\}</span><script type="math/tex">\{X,Y\}</script></span>，<span class="arithmatex"><span class="MathJax_Preview">S</span><script type="math/tex">S</script></span> 的属性集为 <span class="arithmatex"><span class="MathJax_Preview">\{Y,Z\}</span><script type="math/tex">\{Y,Z\}</script></span></li>
+<li><span class="arithmatex"><span class="MathJax_Preview">R\Join S=\{t|t=&lt;X,Y,Z&gt;\textbf{and }t[X,Y]\in R\textbf{ and }t[Y,Z]\in S\}</span><script type="math/tex">R\Join S=\{t|t=<X,Y,Z>\textbf{and }t[X,Y]\in R\textbf{ and }t[Y,Z]\in S\}</script></span></li>
+<li>相当于在 <span class="arithmatex"><span class="MathJax_Preview">R\times S</span><script type="math/tex">R\times S</script></span> 中选取 R 和 S 的所有公共属性值都相等的元组，并在结果中去掉重复属性</li>
 </ul>
 <p><img alt="image-20230321205723104" src="../chap3.assets/image-20230321205723104.png" /></p>
-<p><strong>$\Theta$ 连接</strong></p>
+<p><strong><span class="arithmatex"><span class="MathJax_Preview">\Theta</span><script type="math/tex">\Theta</script></span> 连接</strong></p>
 <ul>
-<li>$R\Join_{A\Theta B}S={t|t=<t^r,t^s>\textbf{ and }t^r\in R\textbf{ and }t^s\in S\textbf{ and }t^r[A]\Theta t^s[B]}$</li>
-<li>当 $\Theta$ 是等号时叫做<strong>等值连接</strong></li>
+<li><span class="arithmatex"><span class="MathJax_Preview">R\Join_{A\Theta B}S=\{t|t=&lt;t^r,t^s&gt;\textbf{ and }t^r\in R\textbf{ and }t^s\in S\textbf{ and }t^r[A]\Theta t^s[B]\}</span><script type="math/tex">R\Join_{A\Theta B}S=\{t|t=<t^r,t^s>\textbf{ and }t^r\in R\textbf{ and }t^s\in S\textbf{ and }t^r[A]\Theta t^s[B]\}</script></span></li>
+<li>当 <span class="arithmatex"><span class="MathJax_Preview">\Theta</span><script type="math/tex">\Theta</script></span> 是等号时叫做<strong>等值连接</strong></li>
 </ul>
 <p><img alt="image-20230321205958086" src="../chap3.assets/image-20230321205958086.png" /></p>
 <p>（4）<strong>除（Divide）</strong>：除的结果与第二个关系的笛卡儿积包含在第一个关系中</p>
 <ul>
-<li>设 $R$ 的属性集为 ${X,Y}$，$S$ 的属性集为 ${Y}$，则 $R\div S$ 的结果是一个关系 $P$，$P$ 的属性集为 ${X}$，并且 $P\times S$ 包含在 $R$ 中</li>
-<li>$degree(P)=degree(R)-degree(S)$</li>
-<li>$R\div S$ 的计算方法：$T=\pi_X(R)\quad\quad W=(T\times S)-R\quad\quad V=\pi_X(W)\quad\quad R\div S=T-V$</li>
+<li>设 <span class="arithmatex"><span class="MathJax_Preview">R</span><script type="math/tex">R</script></span> 的属性集为 <span class="arithmatex"><span class="MathJax_Preview">\{X,Y\}</span><script type="math/tex">\{X,Y\}</script></span>，<span class="arithmatex"><span class="MathJax_Preview">S</span><script type="math/tex">S</script></span> 的属性集为 <span class="arithmatex"><span class="MathJax_Preview">\{Y\}</span><script type="math/tex">\{Y\}</script></span>，则 <span class="arithmatex"><span class="MathJax_Preview">R\div S</span><script type="math/tex">R\div S</script></span> 的结果是一个关系 <span class="arithmatex"><span class="MathJax_Preview">P</span><script type="math/tex">P</script></span>，<span class="arithmatex"><span class="MathJax_Preview">P</span><script type="math/tex">P</script></span> 的属性集为 <span class="arithmatex"><span class="MathJax_Preview">\{X\}</span><script type="math/tex">\{X\}</script></span>，并且 <span class="arithmatex"><span class="MathJax_Preview">P\times S</span><script type="math/tex">P\times S</script></span> 包含在 <span class="arithmatex"><span class="MathJax_Preview">R</span><script type="math/tex">R</script></span> 中</li>
+<li><span class="arithmatex"><span class="MathJax_Preview">degree(P)=degree(R)-degree(S)</span><script type="math/tex">degree(P)=degree(R)-degree(S)</script></span></li>
+<li><span class="arithmatex"><span class="MathJax_Preview">R\div S</span><script type="math/tex">R\div S</script></span> 的计算方法：<span class="arithmatex"><span class="MathJax_Preview">T=\pi_X(R)\quad\quad W=(T\times S)-R\quad\quad V=\pi_X(W)\quad\quad R\div S=T-V</span><script type="math/tex">T=\pi_X(R)\quad\quad W=(T\times S)-R\quad\quad V=\pi_X(W)\quad\quad R\div S=T-V</script></span></li>
 </ul>
 <h4 id="关系演算的语法">关系演算的语法<a class="headerlink" href="#关系演算的语法" title="Permanent link">&para;</a></h4>
 <table>
@@ -1071,42 +1071,42 @@
 <tbody>
 <tr>
 <td align="center">并</td>
-<td align="center">$\cup$</td>
+<td align="center"><span class="arithmatex"><span class="MathJax_Preview">\cup</span><script type="math/tex">\cup</script></span></td>
 <td align="center">Union</td>
 </tr>
 <tr>
 <td align="center">交</td>
-<td align="center">$\cap$</td>
+<td align="center"><span class="arithmatex"><span class="MathJax_Preview">\cap</span><script type="math/tex">\cap</script></span></td>
 <td align="center">Intersect</td>
 </tr>
 <tr>
 <td align="center">差</td>
-<td align="center">$-$</td>
+<td align="center"><span class="arithmatex"><span class="MathJax_Preview">-</span><script type="math/tex">-</script></span></td>
 <td align="center">Minus</td>
 </tr>
 <tr>
 <td align="center">笛卡儿积</td>
-<td align="center">$\times$</td>
+<td align="center"><span class="arithmatex"><span class="MathJax_Preview">\times</span><script type="math/tex">\times</script></span></td>
 <td align="center">Times</td>
 </tr>
 <tr>
 <td align="center">选择</td>
-<td align="center">$\sigma$</td>
+<td align="center"><span class="arithmatex"><span class="MathJax_Preview">\sigma</span><script type="math/tex">\sigma</script></span></td>
 <td align="center">Where ...</td>
 </tr>
 <tr>
 <td align="center">投影</td>
-<td align="center">$\pi$</td>
+<td align="center"><span class="arithmatex"><span class="MathJax_Preview">\pi</span><script type="math/tex">\pi</script></span></td>
 <td align="center">{ All But ...}</td>
 </tr>
 <tr>
 <td align="center">连接</td>
-<td align="center">$\Join$</td>
+<td align="center"><span class="arithmatex"><span class="MathJax_Preview">\Join</span><script type="math/tex">\Join</script></span></td>
 <td align="center">Join</td>
 </tr>
 <tr>
 <td align="center">除</td>
-<td align="center">$\div$</td>
+<td align="center"><span class="arithmatex"><span class="MathJax_Preview">\div</span><script type="math/tex">\div</script></span></td>
 <td align="center">Divide By</td>
 </tr>
 </tbody>
@@ -1115,46 +1115,46 @@
 <ul>
 <li>数据库中的关系都具有名字，但是关系代数表达式的结果没有可供引用的名字</li>
 <li>引入重命名操作使得关系代数表达式的结果可以方便地在其他位置引用</li>
-<li>$\rho_X(E)$：将关系代数表达式 E 重命名为 X</li>
-<li>$\rho_{X(A_1,...,A_n)}(E)$：将关系代数表达式 E 重命名为 X，并且各属性更名为 $A_1,...,A_n$</li>
+<li><span class="arithmatex"><span class="MathJax_Preview">\rho_X(E)</span><script type="math/tex">\rho_X(E)</script></span>：将关系代数表达式 E 重命名为 X</li>
+<li><span class="arithmatex"><span class="MathJax_Preview">\rho_{X(A_1,...,A_n)}(E)</span><script type="math/tex">\rho_{X(A_1,...,A_n)}(E)</script></span>：将关系代数表达式 E 重命名为 X，并且各属性更名为 <span class="arithmatex"><span class="MathJax_Preview">A_1,...,A_n</span><script type="math/tex">A_1,...,A_n</script></span></li>
 </ul>
 <h2 id="关系代数表达式的定义">关系代数表达式的定义<a class="headerlink" href="#关系代数表达式的定义" title="Permanent link">&para;</a></h2>
 <ul>
 <li>基本表达式：数据库中的一个关系，或者是常量关系</li>
-<li>$E_1,E_2$ 是基本表达式，则 $E_1\cup E_2,\sigma_P(E_1),\pi_S(E_2)$ 等都是关系代数表达式</li>
+<li><span class="arithmatex"><span class="MathJax_Preview">E_1,E_2</span><script type="math/tex">E_1,E_2</script></span> 是基本表达式，则 <span class="arithmatex"><span class="MathJax_Preview">E_1\cup E_2,\sigma_P(E_1),\pi_S(E_2)</span><script type="math/tex">E_1\cup E_2,\sigma_P(E_1),\pi_S(E_2)</script></span> 等都是关系代数表达式</li>
 </ul>
 <h2 id="附加的关系代数操作">附加的关系代数操作<a class="headerlink" href="#附加的关系代数操作" title="Permanent link">&para;</a></h2>
 <h3 id="扩展投影">扩展投影<a class="headerlink" href="#扩展投影" title="Permanent link">&para;</a></h3>
-<p>仍用 $\pi_L(R)$ 表示投影操作，投影列表可以是如下元素之一：</p>
+<p>仍用 <span class="arithmatex"><span class="MathJax_Preview">\pi_L(R)</span><script type="math/tex">\pi_L(R)</script></span> 表示投影操作，投影列表可以是如下元素之一：</p>
 <ul>
-<li>$R$ 的一个属性</li>
-<li>形如 $x\rightarrow y$ 的表达式，这里 $x,y$ 都是属性名，表示取出 $x$ 之后重命名为 $y$</li>
-<li>形如 $E\rightarrow z$ 的表达式，其中 $E$ 是一个涉及 R 的属性、常量和运算符的表达式，$z$ 是新名字</li>
-<li>如：$a+b\rightarrow x\quad\quad c||d\rightarrow e$（串连接）</li>
+<li><span class="arithmatex"><span class="MathJax_Preview">R</span><script type="math/tex">R</script></span> 的一个属性</li>
+<li>形如 <span class="arithmatex"><span class="MathJax_Preview">x\rightarrow y</span><script type="math/tex">x\rightarrow y</script></span> 的表达式，这里 <span class="arithmatex"><span class="MathJax_Preview">x,y</span><script type="math/tex">x,y</script></span> 都是属性名，表示取出 <span class="arithmatex"><span class="MathJax_Preview">x</span><script type="math/tex">x</script></span> 之后重命名为 <span class="arithmatex"><span class="MathJax_Preview">y</span><script type="math/tex">y</script></span></li>
+<li>形如 <span class="arithmatex"><span class="MathJax_Preview">E\rightarrow z</span><script type="math/tex">E\rightarrow z</script></span> 的表达式，其中 <span class="arithmatex"><span class="MathJax_Preview">E</span><script type="math/tex">E</script></span> 是一个涉及 R 的属性、常量和运算符的表达式，<span class="arithmatex"><span class="MathJax_Preview">z</span><script type="math/tex">z</script></span> 是新名字</li>
+<li>如：<span class="arithmatex"><span class="MathJax_Preview">a+b\rightarrow x\quad\quad c||d\rightarrow e</span><script type="math/tex">a+b\rightarrow x\quad\quad c||d\rightarrow e</script></span>（串连接）</li>
 </ul>
 <p>举例：</p>
-<p>$Employee(E#, FirstName, LastName, salary)$</p>
+<p><span class="arithmatex"><span class="MathJax_Preview">Employee(E\#, FirstName, LastName, salary)</span><script type="math/tex">Employee(E\#, FirstName, LastName, salary)</script></span></p>
 <ul>
-<li>$\pi_{E#,FirstName\mid\mid LastName\rightarrow Name}(Employee)$</li>
-<li>$\pi_{E#,salary*0.95\rightarrow Taxed_salary}(Employee)$</li>
-<li>$\pi_{E#\rightarrow EmployeeNum}(Employee)$</li>
+<li><span class="arithmatex"><span class="MathJax_Preview">\pi_{E\#,FirstName\mid\mid LastName\rightarrow Name}(Employee)</span><script type="math/tex">\pi_{E\#,FirstName\mid\mid LastName\rightarrow Name}(Employee)</script></span></li>
+<li><span class="arithmatex"><span class="MathJax_Preview">\pi_{E\#,salary*0.95\rightarrow Taxed\_salary}(Employee)</span><script type="math/tex">\pi_{E\#,salary*0.95\rightarrow Taxed\_salary}(Employee)</script></span></li>
+<li><span class="arithmatex"><span class="MathJax_Preview">\pi_{E\#\rightarrow EmployeeNum}(Employee)</span><script type="math/tex">\pi_{E\#\rightarrow EmployeeNum}(Employee)</script></span></li>
 </ul>
 <h3 id="聚集函数aggregate">聚集函数（Aggregate）<a class="headerlink" href="#聚集函数aggregate" title="Permanent link">&para;</a></h3>
 <p>如 SUM，COUNT，AVG，MAX，MIN 等</p>
 <ul>
-<li>$\pi_{COUNT(E#)\rightarrow employee_count}(Employee)$</li>
+<li><span class="arithmatex"><span class="MathJax_Preview">\pi_{COUNT(E\#)\rightarrow employee\_count}(Employee)</span><script type="math/tex">\pi_{COUNT(E\#)\rightarrow employee\_count}(Employee)</script></span></li>
 </ul>
 <h3 id="分组group">分组（Group）<a class="headerlink" href="#分组group" title="Permanent link">&para;</a></h3>
-<p>$\gamma_L(R)$，L 中只能包括两类对象：</p>
+<p><span class="arithmatex"><span class="MathJax_Preview">\gamma_L(R)</span><script type="math/tex">\gamma_L(R)</script></span>，L 中只能包括两类对象：</p>
 <ul>
 <li>分组属性：此操作依据分组属性的值将 R 分组</li>
 <li>聚集函数：应用到关系的某个属性上的聚集操作，作为聚集函数参数的属性被称为聚集属性</li>
 </ul>
 <p><img alt="image-20230321213013434" src="../chap3.assets/image-20230321213013434.png" /></p>
 <h3 id="排序">排序<a class="headerlink" href="#排序" title="Permanent link">&para;</a></h3>
-<p>$\tau_L(R)$</p>
+<p><span class="arithmatex"><span class="MathJax_Preview">\tau_L(R)</span><script type="math/tex">\tau_L(R)</script></span></p>
 <h3 id="赋值">赋值<a class="headerlink" href="#赋值" title="Permanent link">&para;</a></h3>
-<p>$R\leftarrow E$</p>
+<p><span class="arithmatex"><span class="MathJax_Preview">R\leftarrow E</span><script type="math/tex">R\leftarrow E</script></span></p>
 
 
 
