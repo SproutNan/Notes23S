@@ -1,0 +1,767 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../lab2/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.1">
+    
+    
+      
+        <title>Lab3 - Notes23S</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.402914a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.a0c5b2b5.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://101.ustclug.org/css/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lab3" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="Notes23S" class="md-header__button md-logo" aria-label="Notes23S" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Notes23S
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lab3
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/SproutNan/Notes23S" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    SproutNan/Notes23S
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Notes23S" class="md-nav__button md-logo" aria-label="Notes23S" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Notes23S
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/SproutNan/Notes23S" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    SproutNan/Notes23S
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Homepage
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          数据库
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          数据库
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E6%95%B0%E6%8D%AE%E5%BA%93/chap1/" class="md-nav__link">
+        Chap1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E6%95%B0%E6%8D%AE%E5%BA%93/chap2/" class="md-nav__link">
+        Chap2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E6%95%B0%E6%8D%AE%E5%BA%93/chap3/" class="md-nav__link">
+        Chap3
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          计算机图形学
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          计算机图形学
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+          实验
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          实验
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab1/" class="md-nav__link">
+        Lab1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab2/" class="md-nav__link">
+        Lab2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Lab3
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Lab3
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#背景" class="md-nav__link">
+    背景
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#数学原理" class="md-nav__link">
+    数学原理
+  </a>
+  
+    <nav class="md-nav" aria-label="数学原理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#数学知识预备" class="md-nav__link">
+    数学知识预备
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#论文核心内容" class="md-nav__link">
+    论文核心内容
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#离散图像上的处理" class="md-nav__link">
+    离散图像上的处理
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matlab-实现" class="md-nav__link">
+    Matlab 实现
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#最终效果" class="md-nav__link">
+    最终效果
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#背景" class="md-nav__link">
+    背景
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#数学原理" class="md-nav__link">
+    数学原理
+  </a>
+  
+    <nav class="md-nav" aria-label="数学原理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#数学知识预备" class="md-nav__link">
+    数学知识预备
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#论文核心内容" class="md-nav__link">
+    论文核心内容
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#离散图像上的处理" class="md-nav__link">
+    离散图像上的处理
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matlab-实现" class="md-nav__link">
+    Matlab 实现
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#最终效果" class="md-nav__link">
+    最终效果
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="lab3">Lab3<a class="headerlink" href="#lab3" title="Permanent link">&para;</a></h1>
+<h2 id="背景">背景<a class="headerlink" href="#背景" title="Permanent link">&para;</a></h2>
+<p>实现泊松融合（图像融合的一种方式）。</p>
+<h2 id="数学原理">数学原理<a class="headerlink" href="#数学原理" title="Permanent link">&para;</a></h2>
+<h3 id="数学知识预备">数学知识预备<a class="headerlink" href="#数学知识预备" title="Permanent link">&para;</a></h3>
+<p>梯度 <span class="arithmatex"><span class="MathJax_Preview">\nabla g</span><script type="math/tex">\nabla g</script></span>，拉普拉斯算子 <span class="arithmatex"><span class="MathJax_Preview">\displaystyle\Delta f=\frac{\partial^2f}{\partial x^2}+\frac{\partial^2f}{\partial y^2}</span><script type="math/tex">\displaystyle\Delta f=\frac{\partial^2f}{\partial x^2}+\frac{\partial^2f}{\partial y^2}</script></span>，散度 <span class="arithmatex"><span class="MathJax_Preview">\displaystyle\text{div }\textbf{v}=\frac{\partial u}{\partial x}+\frac{\partial v}{\partial y}</span><script type="math/tex">\displaystyle\text{div }\textbf{v}=\frac{\partial u}{\partial x}+\frac{\partial v}{\partial y}</script></span></p>
+<p>二维拉普拉斯方程：<span class="arithmatex"><span class="MathJax_Preview">\psi_{xx}+\psi_{yy}=\nabla^2\psi=\text{div }\nabla\psi=\Delta \psi=0</span><script type="math/tex">\psi_{xx}+\psi_{yy}=\nabla^2\psi=\text{div }\nabla\psi=\Delta \psi=0</script></span></p>
+<p>泊松方程：<span class="arithmatex"><span class="MathJax_Preview">-\Delta \psi =f</span><script type="math/tex">-\Delta \psi =f</script></span>，这里 <span class="arithmatex"><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> 是已知函数，<span class="arithmatex"><span class="MathJax_Preview">\psi</span><script type="math/tex">\psi</script></span> 是未知函数，解方程需要边界信息，如一个有界开集 <span class="arithmatex"><span class="MathJax_Preview">\Omega</span><script type="math/tex">\Omega</script></span>，满足
+$$
+\begin{cases}
+-\Delta \psi=f  &amp; \text{ in } \Omega \
+\psi=g  &amp; \text{ auf } \partial \Omega
+\end{cases}
+$$
+在离散的图像上，<span class="arithmatex"><span class="MathJax_Preview">\displaystyle\frac{d^2f}{dx^2}=\frac{f(x+1)-2f(x)+f(x-1)}{2}</span><script type="math/tex">\displaystyle\frac{d^2f}{dx^2}=\frac{f(x+1)-2f(x)+f(x-1)}{2}</script></span>，卷积核 <span class="arithmatex"><span class="MathJax_Preview">\begin{bmatrix}
+ 0 &amp; 0 &amp; 0\\
+ 1 &amp; -2 &amp; 1\\
+ 0 &amp; 0 &amp; 0
+\end{bmatrix} +
+\begin{bmatrix}
+ 0 &amp; 1 &amp; 0\\
+ 0 &amp; -2 &amp; 0\\
+ 0 &amp; 1 &amp; 0
+\end{bmatrix} =
+\begin{bmatrix}
+ 0 &amp; 1 &amp; 0\\
+ 1 &amp; -4 &amp; 1\\
+ 0 &amp; 1 &amp; 0
+\end{bmatrix}</span><script type="math/tex">\begin{bmatrix}
+ 0 & 0 & 0\\
+ 1 & -2 & 1\\
+ 0 & 0 & 0
+\end{bmatrix} +
+\begin{bmatrix}
+ 0 & 1 & 0\\
+ 0 & -2 & 0\\
+ 0 & 1 & 0
+\end{bmatrix} =
+\begin{bmatrix}
+ 0 & 1 & 0\\
+ 1 & -4 & 1\\
+ 0 & 1 & 0
+\end{bmatrix}</script></span></p>
+<h3 id="论文核心内容">论文核心内容<a class="headerlink" href="#论文核心内容" title="Permanent link">&para;</a></h3>
+<p>泊松融合的核心思想不是让需要融合的两张图像直接叠加，而是让<strong>目标图像</strong> <span class="arithmatex"><span class="MathJax_Preview">D</span><script type="math/tex">D</script></span> 在融合部分根据<strong>源图像</strong> <span class="arithmatex"><span class="MathJax_Preview">S</span><script type="math/tex">S</script></span> 的引导场（实际是梯度场）“生长” 出新的图像。</p>
+<p>也就是说，只需要提供 <span class="arithmatex"><span class="MathJax_Preview">S</span><script type="math/tex">S</script></span> 的梯度场，让 <span class="arithmatex"><span class="MathJax_Preview">D</span><script type="math/tex">D</script></span> 根据自身特点，按照 <span class="arithmatex"><span class="MathJax_Preview">S</span><script type="math/tex">S</script></span> 对应的梯度场生成融合部分。由于 <span class="arithmatex"><span class="MathJax_Preview">D</span><script type="math/tex">D</script></span> 是按照自身特点出发生成融合区域，所以融合结果会显得更加自然。
+<img alt="image-20230322221722363" src="../lab3.assets/image-20230322221722363.png" /></p>
+<p>需要融合的区域是 <span class="arithmatex"><span class="MathJax_Preview">\Omega</span><script type="math/tex">\Omega</script></span>，<span class="arithmatex"><span class="MathJax_Preview">f^*</span><script type="math/tex">f^*</script></span> 是 <span class="arithmatex"><span class="MathJax_Preview">S-\Omega</span><script type="math/tex">S-\Omega</script></span> 部分的已知函数，<span class="arithmatex"><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> 是 <span class="arithmatex"><span class="MathJax_Preview">\Omega</span><script type="math/tex">\Omega</script></span> 上的未知函数。</p>
+<p><strong>合并后的图像看上去尽量平滑</strong>：
+$$
+\min_f\iint_\Omega|\nabla f|^2\quad\quad \text{s.t. }f|<em _partial_Omega="\partial\Omega">{\partial\Omega}=f^<em>|_{\partial\Omega}
+$$
+</em><em>再要求 <span class="arithmatex"><span class="MathJax_Preview">D</span><script type="math/tex">D</script></span> 保持本身的纹理信息，但在边界上看不到明显的处理痕迹</em><em>：
+$$
+\min_f\iint_\Omega|\nabla f-\nabla I|^2\quad\quad \text{s.t. }f|_{\partial\Omega}=f^</em>|</em>
+$$
+- <span class="arithmatex"><span class="MathJax_Preview">I</span><script type="math/tex">I</script></span>：<span class="arithmatex"><span class="MathJax_Preview">S</span><script type="math/tex">S</script></span> 中被合成的部分
+- <span class="arithmatex"><span class="MathJax_Preview">V=\nabla I</span><script type="math/tex">V=\nabla I</script></span> 是梯度场
+- <span class="arithmatex"><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span>：合并后 <span class="arithmatex"><span class="MathJax_Preview">D</span><script type="math/tex">D</script></span> 在 <span class="arithmatex"><span class="MathJax_Preview">\Omega</span><script type="math/tex">\Omega</script></span> 内的像素值
+- <span class="arithmatex"><span class="MathJax_Preview">f^*</span><script type="math/tex">f^*</script></span>：合并后 <span class="arithmatex"><span class="MathJax_Preview">D</span><script type="math/tex">D</script></span> 在 <span class="arithmatex"><span class="MathJax_Preview">\Omega</span><script type="math/tex">\Omega</script></span> 外的像素值</p>
+<p>用 <span class="arithmatex"><span class="MathJax_Preview">V</span><script type="math/tex">V</script></span> 作为求解式的引导场，合并后图像在 <span class="arithmatex"><span class="MathJax_Preview">\Omega</span><script type="math/tex">\Omega</script></span> 内的像素值 <span class="arithmatex"><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> 的梯度与 <span class="arithmatex"><span class="MathJax_Preview">I</span><script type="math/tex">I</script></span> 的梯度越接近，原始纹理就保持得越好，此时使用变分的方法可以得到 <span class="arithmatex"><span class="MathJax_Preview">\Delta f=\Delta I</span><script type="math/tex">\Delta f=\Delta I</script></span>，也可以写成 <span class="arithmatex"><span class="MathJax_Preview">\Delta f=\text{div }\nabla I</span><script type="math/tex">\Delta f=\text{div }\nabla I</script></span>，这就是泊松方程的形式了。</p>
+<h3 id="离散图像上的处理">离散图像上的处理<a class="headerlink" href="#离散图像上的处理" title="Permanent link">&para;</a></h3>
+<p>拉普拉斯算子的离散算式：
+$$
+\Delta I=I_{i+1,j}+I_{i,j+1}+I_{i-1,j}+I_{i,j-1}-4I_{i,j}
+$$
+因为 <span class="arithmatex"><span class="MathJax_Preview">I</span><script type="math/tex">I</script></span> 是已知的图像，所以可以提前将 <span class="arithmatex"><span class="MathJax_Preview">I</span><script type="math/tex">I</script></span> 处理成 <span class="arithmatex"><span class="MathJax_Preview">B=\Delta I</span><script type="math/tex">B=\Delta I</script></span>，所以泊松方程写成
+$$
+f_{i+1,j}+f_{i,j+1}+f_{i-1,j}+f_{i,j-1}-4f_{i,j}=b_{i,j}
+$$
+这样上面的方程就变成了矩阵方程，如一个 <span class="arithmatex"><span class="MathJax_Preview">3\times3</span><script type="math/tex">3\times3</script></span> 的矩阵：
+$$
+\left[\begin{array}{ccccccccc}
+-4 &amp; 1 &amp; &amp; &amp; &amp; &amp; &amp; &amp; \
+1 &amp; -4 &amp; 1 &amp; &amp; &amp; &amp; &amp; &amp; \
+&amp; 1 &amp; -4 &amp; 1 &amp; &amp; &amp; &amp; &amp; \
+&amp; &amp; 1 &amp; -4 &amp; 1 &amp; &amp; &amp; &amp; \
+&amp; &amp; &amp; 1 &amp; -4 &amp; 1 &amp; &amp; &amp; \
+&amp; &amp; &amp; &amp; 1 &amp; -4 &amp; 1 &amp; &amp; \
+&amp; &amp; &amp; &amp; &amp; 1 &amp; -4 &amp; 1 &amp; \
+&amp; &amp; &amp; &amp; &amp; &amp; 1 &amp; -4 &amp; 1
+\end{array}\right]\left[\begin{array}{l}
+f_{11} \
+f_{21} \
+f_{31} \
+f_{12} \
+f_{22} \
+f_{32} \
+f_{13} \
+f_{23} \
+f_{33}
+\end{array}\right]=\left[\begin{array}{l}
+b_{11} \
+b_{21} \
+b_{31} \
+b_{12} \
+b_{22} \
+b_{32} \
+b_{13} \
+b_{23} \
+b_{33}
+\end{array}\right]
+$$
+左侧这个矩阵是稀疏、正定、对称的，因此涉及到稀疏线性系统的求解，注意左下角和右上角还可能有一些稀疏的 “1”，代表上方和下方的像素，这里 -4 代表自己，左右的 1 代表的是左右相邻的像素。为了后文方便叙述，不妨记这个式子为 <span class="arithmatex"><span class="MathJax_Preview">AF=B</span><script type="math/tex">AF=B</script></span>。</p>
+<p>还需要考虑 <span class="arithmatex"><span class="MathJax_Preview">f|_{\partial\Omega}=f^*|_{\partial\Omega}</span><script type="math/tex">f|_{\partial\Omega}=f^*|_{\partial\Omega}</script></span>，也就是给边界上的值确定。</p>
+<h2 id="matlab-实现">Matlab 实现<a class="headerlink" href="#matlab-实现" title="Permanent link">&para;</a></h2>
+<p>这个实验的难点是，给定的输入是一个 <span class="arithmatex"><span class="MathJax_Preview">n\times 2</span><script type="math/tex">n\times 2</script></span> 的矩阵，每一行表示的是一个顶点坐标，这些坐标一起围成了多边形 <span class="arithmatex"><span class="MathJax_Preview">\Omega</span><script type="math/tex">\Omega</script></span>。也就是说这里的 <span class="arithmatex"><span class="MathJax_Preview">F</span><script type="math/tex">F</script></span> 不一定是把一个矩阵从<strong>行列形式</strong>拆成<strong>列形式</strong>就行，每一行的像素个数可能不同，导致表示上方和下方的像素不能简单的通过矩阵索引来完成，下面会具体讲一些实现上的细节。</p>
+<p><strong>如何选中所有多边形内的像素？</strong>Matlab 提供了 <code>poly2mask</code> 函数，可以将一个图像转化为多边形依赖的二值掩模矩阵。举例来说，如果我们之前通过一些特定的函数，如 <code>boundingBox</code> 创建了包含多边形在内的最小矩形 <span class="arithmatex"><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span>，将此矩形转化为掩模矩阵 <span class="arithmatex"><span class="MathJax_Preview">M</span><script type="math/tex">M</script></span> 之后，在多边形范围内的位置为 1，反之则为 0。</p>
+<p><strong>如何将不规则的像素多边形列化？</strong>我们可以遍历 <span class="arithmatex"><span class="MathJax_Preview">M</span><script type="math/tex">M</script></span> 的每行、每列，给所有范围内的像素一个编号，这样 <span class="arithmatex"><span class="MathJax_Preview">F=[f_1\quad...\quad f_m]^T</span><script type="math/tex">F=[f_1\quad...\quad f_m]^T</script></span>，这里 <span class="arithmatex"><span class="MathJax_Preview">1\cdots m</span><script type="math/tex">1\cdots m</script></span> 就是像素的编号序列。我们可以就在 <span class="arithmatex"><span class="MathJax_Preview">M</span><script type="math/tex">M</script></span> 上进行编号化，这样后面构造 <span class="arithmatex"><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> 时，可以直接通过 <span class="arithmatex"><span class="MathJax_Preview">M</span><script type="math/tex">M</script></span> 索引所需像素的上下方像素编号。</p>
+<p><strong>如何构造矩阵 <span class="arithmatex"><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> ？</strong>矩阵 <span class="arithmatex"><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span> 是一个稀疏矩阵，其非零元素占比是 <span class="arithmatex"><span class="MathJax_Preview">O(5n/n^2)=O(1/n)</span><script type="math/tex">O(5n/n^2)=O(1/n)</script></span> 的，所以我们通过三元组 rows, cols, vals 记录非零元素值，然后使用 <code>sparse</code> 构造稀疏矩阵。稀疏矩阵可以通过 <code>decomposition</code> 进行分解，得到比较小的矩阵，加速计算。这种分解通常是根据特定的算法进行的，具体过程可能会因算法而异。例如，如果需要对矩阵进行降维，可以选择奇异值分解（SVD），如果需要解线性方程组，则可以选择 LU 分解等。</p>
+<p><strong>如何构造矩阵 <span class="arithmatex"><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span> ？</strong>矩阵 <span class="arithmatex"><span class="MathJax_Preview">B</span><script type="math/tex">B</script></span> 相当于是把原图像的 <span class="arithmatex"><span class="MathJax_Preview">\Omega</span><script type="math/tex">\Omega</script></span> 位置拼接到目标图像上，然后在拼接的图像 <span class="arithmatex"><span class="MathJax_Preview">K</span><script type="math/tex">K</script></span> 上计算拉普拉斯算子作用之后的矩阵。举例来说，一个元素 <span class="arithmatex"><span class="MathJax_Preview">[i,j]</span><script type="math/tex">[i,j]</script></span>，如果其左边的像素也在 <span class="arithmatex"><span class="MathJax_Preview">\Omega</span><script type="math/tex">\Omega</script></span> 中，则计算式中包含 <span class="arithmatex"><span class="MathJax_Preview">K(k_{ij})-K(k_{i-1,j})</span><script type="math/tex">K(k_{ij})-K(k_{i-1,j})</script></span> 项，如果不在，则包含 <span class="arithmatex"><span class="MathJax_Preview">-K(k_{i-1,j})</span><script type="math/tex">-K(k_{i-1,j})</script></span> 项（这个是原来的目标图像的像素）。对这个像素的上下左右四个像素都进行判断计算，就得到了 <span class="arithmatex"><span class="MathJax_Preview">b_{ij}</span><script type="math/tex">b_{ij}</script></span> 的值，具体的编号还需要通过 <span class="arithmatex"><span class="MathJax_Preview">M</span><script type="math/tex">M</script></span> 来索引。</p>
+<p><img alt="image-20230324103233900" src="../lab3.assets/image-20230324103233900.png" /></p>
+<p><strong>如何构造最终的图像？</strong>最终的图像需要把计算得到的 <span class="arithmatex"><span class="MathJax_Preview">F</span><script type="math/tex">F</script></span> 重新反序列化到目标图像上。</p>
+<h2 id="最终效果">最终效果<a class="headerlink" href="#最终效果" title="Permanent link">&para;</a></h2>
+<p>懒得放了…… 恭喜退课…… 这门课的代码实现占用了太多的时间，但是原理还是非常有意思的，以后若有精力会继续更新相关作业的思考。</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.b78d2936.min.js"></script>
+      
+        <script src="../../../mathjax-config.js"></script>
+      
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      
+        <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+      
+    
+  </body>
+</html>
