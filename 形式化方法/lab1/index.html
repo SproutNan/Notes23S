@@ -1,0 +1,824 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../..">
+      
+      
+        <link rel="next" href="../../%E6%95%B0%E6%8D%AE%E5%BA%93/chap1/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.4">
+    
+    
+      
+        <title>Lab1 - Notes23S</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.240905d7.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.a0c5b2b5.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://101.ustclug.org/css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lab1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Notes23S" class="md-header__button md-logo" aria-label="Notes23S" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Notes23S
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lab1
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/SproutNan/Notes23S" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    SproutNan/Notes23S
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Notes23S" class="md-nav__button md-logo" aria-label="Notes23S" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Notes23S
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/SproutNan/Notes23S" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    SproutNan/Notes23S
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Homepage
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          形式化方法
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          形式化方法
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Lab1
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Lab1
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#satsmt" class="md-nav__link">
+    SAT/SMT
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#求-nqueens-的一个可行解" class="md-nav__link">
+    求 NQueens 的一个可行解
+  </a>
+  
+    <nav class="md-nav" aria-label="求 NQueens 的一个可行解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#使用-smt" class="md-nav__link">
+    使用 SMT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#使用-puresat" class="md-nav__link">
+    使用 pureSAT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#求解性能对比" class="md-nav__link">
+    求解性能对比
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#代码使用文档" class="md-nav__link">
+    代码使用文档
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#使用-puresat-求解-da-bda-b" class="md-nav__link">
+    使用 pureSAT 求解 d=a-bd=a-b
+  </a>
+  
+    <nav class="md-nav" aria-label="使用 pureSAT 求解 d=a-bd=a-b">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#解决-abab-问题" class="md-nav__link">
+    解决 a+ba+b 问题
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#转化-a-ba-b-问题" class="md-nav__link">
+    转化 a-ba-b 问题
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#代码使用文档_1" class="md-nav__link">
+    代码使用文档
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          数据库
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          数据库
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E5%BA%93/chap1/" class="md-nav__link">
+        Chap1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E5%BA%93/chap2/" class="md-nav__link">
+        Chap2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E5%BA%93/chap3/" class="md-nav__link">
+        Chap3
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          计算机图形学
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          计算机图形学
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+          实验
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          实验
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/%E5%AE%9E%E9%AA%8C/lab1/" class="md-nav__link">
+        Lab1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/%E5%AE%9E%E9%AA%8C/lab2/" class="md-nav__link">
+        Lab2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/%E5%AE%9E%E9%AA%8C/lab3/" class="md-nav__link">
+        Lab3
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#satsmt" class="md-nav__link">
+    SAT/SMT
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#求-nqueens-的一个可行解" class="md-nav__link">
+    求 NQueens 的一个可行解
+  </a>
+  
+    <nav class="md-nav" aria-label="求 NQueens 的一个可行解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#使用-smt" class="md-nav__link">
+    使用 SMT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#使用-puresat" class="md-nav__link">
+    使用 pureSAT
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#求解性能对比" class="md-nav__link">
+    求解性能对比
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#代码使用文档" class="md-nav__link">
+    代码使用文档
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#使用-puresat-求解-da-bda-b" class="md-nav__link">
+    使用 pureSAT 求解 d=a-bd=a-b
+  </a>
+  
+    <nav class="md-nav" aria-label="使用 pureSAT 求解 d=a-bd=a-b">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#解决-abab-问题" class="md-nav__link">
+    解决 a+ba+b 问题
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#转化-a-ba-b-问题" class="md-nav__link">
+    转化 a-ba-b 问题
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#代码使用文档_1" class="md-nav__link">
+    代码使用文档
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="lab1">Lab1<a class="headerlink" href="#lab1" title="Permanent link">&para;</a></h1>
+<h2 id="satsmt">SAT/SMT<a class="headerlink" href="#satsmt" title="Permanent link">&para;</a></h2>
+<p>SAT 问题：给定一个表达式 <span class="arithmatex"><span class="MathJax_Preview">\phi</span><script type="math/tex">\phi</script></span>，它是可满足的（satisfiable）吗？</p>
+<p>SMT 问题：SAT 的拓展，允许出现<strong>数字</strong>和<strong>不等式</strong>。</p>
+<h2 id="求-nqueens-的一个可行解">求 NQueens 的一个可行解<a class="headerlink" href="#求-nqueens-的一个可行解" title="Permanent link">&para;</a></h2>
+<h3 id="使用-smt">使用 SMT<a class="headerlink" href="#使用-smt" title="Permanent link">&para;</a></h3>
+<p>定义：<span class="arithmatex"><span class="MathJax_Preview">Q[1..n]</span><script type="math/tex">Q[1..n]</script></span>，<span class="arithmatex"><span class="MathJax_Preview">Q[i]=j</span><script type="math/tex">Q[i]=j</script></span> 表示在第 <span class="arithmatex"><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> 行第 <span class="arithmatex"><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> 列放置了皇后</p>
+<p>约束条件：</p>
+<ul>
+<li>取值合法：<span class="arithmatex"><span class="MathJax_Preview">\forall i\in[1..n],Q[i]\in[1..n]</span><script type="math/tex">\forall i\in[1..n],Q[i]\in[1..n]</script></span>，即 <code>[And(1 &lt;= Q[i], Q[i] &lt;= n) for i in range(n)]</code></li>
+<li><span class="arithmatex"><span class="MathJax_Preview">Q[1..n]</span><script type="math/tex">Q[1..n]</script></span> 各不相同，即 <code>[Distinct(Q)]</code></li>
+<li>对任意的两个皇后 <span class="arithmatex"><span class="MathJax_Preview">Q[i],Q[j]</span><script type="math/tex">Q[i],Q[j]</script></span>，首先不能有 <span class="arithmatex"><span class="MathJax_Preview">i=j</span><script type="math/tex">i=j</script></span>；然后，如果它俩在一条主对角线上，说明 <span class="arithmatex"><span class="MathJax_Preview">i+Q[i]=j+Q[j]</span><script type="math/tex">i+Q[i]=j+Q[j]</script></span>；如果它俩在同一副对角线上，说明 <span class="arithmatex"><span class="MathJax_Preview">i+Q[j]=j+Q[i]</span><script type="math/tex">i+Q[j]=j+Q[i]</script></span>，即 <code>[If(i==j, True, And(i+Q[i]!=j+Q[j], i+Q[j]!=j+Q[i])) for i in range(n) for j in range(i)]</code></li>
+</ul>
+<h3 id="使用-puresat">使用 pureSAT<a class="headerlink" href="#使用-puresat" title="Permanent link">&para;</a></h3>
+<p>定义：<span class="arithmatex"><span class="MathJax_Preview">Q[1..n][1..n]</span><script type="math/tex">Q[1..n][1..n]</script></span>，每一个都是布尔变量，<span class="arithmatex"><span class="MathJax_Preview">Q[i][j]=\text{True}</span><script type="math/tex">Q[i][j]=\text{True}</script></span> 表示在第 <span class="arithmatex"><span class="MathJax_Preview">i</span><script type="math/tex">i</script></span> 行第 <span class="arithmatex"><span class="MathJax_Preview">j</span><script type="math/tex">j</script></span> 列放置了皇后。</p>
+<p>约束条件：</p>
+<ul>
+<li>每行有且仅有一个皇后（使用 z3 的 <code>PbEq</code>）</li>
+</ul>
+<p><img alt="image-20230327100239440" src="../lab1.assets/image-20230327100239440.png" /></p>
+<ul>
+<li>每列有且仅有一个皇后</li>
+<li>每个主副对角线上，最多有一个皇后（使用 z3 的 <code>AtMost</code>）</li>
+</ul>
+<p><img alt="image-20230327101424435" src="../lab1.assets/image-20230327101424435.png" /></p>
+<p>给求解器 <code>sol = Solver()</code> 添加上面所有约束，即可求解，有解时解放在 <code>sol.model()</code> 中。</p>
+<h3 id="求解性能对比">求解性能对比<a class="headerlink" href="#求解性能对比" title="Permanent link">&para;</a></h3>
+<p>指标：求出一组解所需要的时间（单位：秒）</p>
+<p>求解规模范围；<span class="arithmatex"><span class="MathJax_Preview">n=[4..50]</span><script type="math/tex">n=[4..50]</script></span>，每个规模求解三次取平均值</p>
+<p><img alt="lab1" src="../lab1.assets/lab1.png" /></p>
+<p>当 <span class="arithmatex"><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> 在此范围内增大时，pureSAT 方法所需的时间缓慢增加，但始终小于 1.5 秒，维持在较低水平；SMT 方法在 <span class="arithmatex"><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> 较大时所需的时间指数形增加。</p>
+<p>pureSAT 看起来可以在能够接受的时间内解决更大规模的问题，测试如下：</p>
+<p><img alt="lab12" src="../lab1.assets/lab1_2.png" /></p>
+<p>可见 pureSAT 在 NQueens 的求解性能上比 SMT 好。</p>
+<h3 id="代码使用文档">代码使用文档<a class="headerlink" href="#代码使用文档" title="Permanent link">&para;</a></h3>
+<p>求解这个问题的代码是以性能测试的方式保存的，主函数将生成 <code>求解性能对比</code> 一节中第二幅图。</p>
+<p>函数 <code>NQueens_SMT(n)</code> 是用 SMT 求解 n 皇后问题的代码，因为只做性能测试，不关心解的情况，这个函数不返回解也不打印解，只断言问题是 sat 的；函数 <code>NQueens_pureSAT(n)</code> 是用 pureSAT 求解 n 皇后问题的代码，与 SMT 方法格式类似。</p>
+<h2 id="使用-puresat-求解-da-bda-b">使用 pureSAT 求解 <span class="arithmatex"><span class="MathJax_Preview">d=a-b</span><script type="math/tex">d=a-b</script></span><a class="headerlink" href="#使用-puresat-求解-da-bda-b" title="Permanent link">&para;</a></h2>
+<h3 id="解决-abab-问题">解决 <span class="arithmatex"><span class="MathJax_Preview">a+b</span><script type="math/tex">a+b</script></span> 问题<a class="headerlink" href="#解决-abab-问题" title="Permanent link">&para;</a></h3>
+<p>在 <span class="arithmatex"><span class="MathJax_Preview">a+b</span><script type="math/tex">a+b</script></span> 问题中，我的解决思路如下：</p>
+<ol>
+<li>将 <span class="arithmatex"><span class="MathJax_Preview">a,b</span><script type="math/tex">a,b</script></span> 转化成二进制字符串（利用 <code>bin(a)[2:]</code>），然后利用 <code>zfill</code> 填充高位 0 至两数对齐，额外加一位 0 方便计算进位，记此时的位数为 <span class="arithmatex"><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>，然后反转 <span class="arithmatex"><span class="MathJax_Preview">a,b</span><script type="math/tex">a,b</script></span> 的字符串以方便用自然顺序处理问题</li>
+<li>新建 <span class="arithmatex"><span class="MathJax_Preview">a=\text{Bool}[1..n]</span><script type="math/tex">a=\text{Bool}[1..n]</script></span>，如果 <span class="arithmatex"><span class="MathJax_Preview">\text{a\_str}[i]==1</span><script type="math/tex">\text{a\_str}[i]==1</script></span>，则添加约束 <span class="arithmatex"><span class="MathJax_Preview">a[i]</span><script type="math/tex">a[i]</script></span>，否则添加 <span class="arithmatex"><span class="MathJax_Preview">\neg a[i]</span><script type="math/tex">\neg a[i]</script></span>，<span class="arithmatex"><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span> 也类似处理</li>
+<li>新建 <span class="arithmatex"><span class="MathJax_Preview">c=\text{Bool}[1..n]</span><script type="math/tex">c=\text{Bool}[1..n]</script></span>，添加约束 <span class="arithmatex"><span class="MathJax_Preview">\neg c[1]</span><script type="math/tex">\neg c[1]</script></span>，然后对 <span class="arithmatex"><span class="MathJax_Preview">i\in[2..n]</span><script type="math/tex">i\in[2..n]</script></span>，添加约束 <span class="arithmatex"><span class="MathJax_Preview">c_{i}\leftrightarrow((a_{i-1}\wedge b_{i-1})\vee(a_{i-1}\wedge c_{i-1})\vee(b_{i-1}\wedge c_{i-1}))</span><script type="math/tex">c_{i}\leftrightarrow((a_{i-1}\wedge b_{i-1})\vee(a_{i-1}\wedge c_{i-1})\vee(b_{i-1}\wedge c_{i-1}))</script></span></li>
+<li>新建 <span class="arithmatex"><span class="MathJax_Preview">d=\text{Bool}[1..n]</span><script type="math/tex">d=\text{Bool}[1..n]</script></span>，对 <span class="arithmatex"><span class="MathJax_Preview">i\in [1..n]</span><script type="math/tex">i\in [1..n]</script></span>，添加约束 <span class="arithmatex"><span class="MathJax_Preview">d_i\leftrightarrow(a_i\leftrightarrow(b_i\leftrightarrow c_i))</span><script type="math/tex">d_i\leftrightarrow(a_i\leftrightarrow(b_i\leftrightarrow c_i))</script></span></li>
+<li>开始求解，并显示结果</li>
+</ol>
+<h3 id="转化-a-ba-b-问题">转化 <span class="arithmatex"><span class="MathJax_Preview">a-b</span><script type="math/tex">a-b</script></span> 问题<a class="headerlink" href="#转化-a-ba-b-问题" title="Permanent link">&para;</a></h3>
+<p>求解 <span class="arithmatex"><span class="MathJax_Preview">d=a-b</span><script type="math/tex">d=a-b</script></span> 问题可以转化为 <span class="arithmatex"><span class="MathJax_Preview">a=d+b</span><script type="math/tex">a=d+b</script></span> 问题（暂时重命名为 <span class="arithmatex"><span class="MathJax_Preview">d'=a'+b</span><script type="math/tex">d'=a'+b</script></span> 问题，这样可以避免修改之前写的复杂的约束式子），这里 <span class="arithmatex"><span class="MathJax_Preview">d'</span><script type="math/tex">d'</script></span> 和 <span class="arithmatex"><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span> 是已知的，只需要求解 <span class="arithmatex"><span class="MathJax_Preview">a'</span><script type="math/tex">a'</script></span>。这只需要稍微修改一下约束条件就可以。与上面不同的步骤思路如下：</p>
+<ol>
+<li>
+<p>新建 <span class="arithmatex"><span class="MathJax_Preview">a=\text{Bool}[1..n]</span><script type="math/tex">a=\text{Bool}[1..n]</script></span>，暂时不做约束，<span class="arithmatex"><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span> 要约束，和上面（<span class="arithmatex"><span class="MathJax_Preview">a+b</span><script type="math/tex">a+b</script></span> 问题）相同处理</p>
+</li>
+<li>
+<p>新建 <span class="arithmatex"><span class="MathJax_Preview">d=\text{Bool}[1..n]</span><script type="math/tex">d=\text{Bool}[1..n]</script></span>，对 <span class="arithmatex"><span class="MathJax_Preview">i\in [1..n]</span><script type="math/tex">i\in [1..n]</script></span>，添加约束 <span class="arithmatex"><span class="MathJax_Preview">d_i\leftrightarrow(a_i\leftrightarrow(b_i\leftrightarrow c_i))</span><script type="math/tex">d_i\leftrightarrow(a_i\leftrightarrow(b_i\leftrightarrow c_i))</script></span>；并且，如果 <span class="arithmatex"><span class="MathJax_Preview">\text{a\_str}[i]==1</span><script type="math/tex">\text{a\_str}[i]==1</script></span>，则添加约束 <span class="arithmatex"><span class="MathJax_Preview">d[i]</span><script type="math/tex">d[i]</script></span>，否则添加 <span class="arithmatex"><span class="MathJax_Preview">\neg d[i]</span><script type="math/tex">\neg d[i]</script></span></p>
+</li>
+</ol>
+<p>只需修改上面两个步骤，即可获得正确解答。</p>
+<h3 id="代码使用文档_1">代码使用文档<a class="headerlink" href="#代码使用文档_1" title="Permanent link">&para;</a></h3>
+<p>求解这个问题的代码支持在命令行测试，文件名为 <code>lab_1_2.py</code>，支持如下两种命令：</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>python3<span class="w"> </span>lab_1_2.py<span class="w"> </span>plus<span class="w"> </span><span class="m">888</span><span class="w"> </span><span class="m">777</span><span class="w">  </span><span class="c1"># 将调用 calculate_a_plus_b(888, 777)</span>
+$<span class="w"> </span>python3<span class="w"> </span>lab_1_2.py<span class="w"> </span>minus<span class="w"> </span><span class="m">888</span><span class="w"> </span><span class="m">777</span><span class="w"> </span><span class="c1"># 将调用 calculate_a_minus_b(888, 777)</span>
+</code></pre></div>
+<p>每条指令倒数两个数是操作数 <span class="arithmatex"><span class="MathJax_Preview">a,b</span><script type="math/tex">a,b</script></span>，减法需要保证 <span class="arithmatex"><span class="MathJax_Preview">a\ge b</span><script type="math/tex">a\ge b</script></span>，执行后将在命令行打印结果：</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>python3<span class="w"> </span>main.py<span class="w"> </span>plus<span class="w"> </span><span class="m">888</span><span class="w"> </span><span class="m">777</span>
+The<span class="w"> </span>sum<span class="w"> </span>of<span class="w"> </span><span class="m">888</span><span class="w"> </span>and<span class="w"> </span><span class="m">777</span><span class="w"> </span>is<span class="w"> </span><span class="m">1665</span>
+$<span class="w"> </span>python3<span class="w"> </span>main.py<span class="w"> </span>minus<span class="w"> </span><span class="m">888</span><span class="w"> </span><span class="m">777</span>
+The<span class="w"> </span>difference<span class="w"> </span>between<span class="w"> </span><span class="m">888</span><span class="w"> </span>and<span class="w"> </span><span class="m">777</span><span class="w"> </span>is<span class="w"> </span><span class="m">111</span>
+</code></pre></div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.19047be9.min.js"></script>
+      
+        <script src="../../mathjax-config.js"></script>
+      
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      
+        <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+      
+    
+  </body>
+</html>
