@@ -1,0 +1,1020 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../..">
+      
+      
+        <link rel="next" href="../../%E5%BD%A2%E5%BC%8F%E5%8C%96%E6%96%B9%E6%B3%95/lab1/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.4">
+    
+    
+      
+        <title>Agent 的概念 - Notes23S</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.240905d7.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.a0c5b2b5.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://101.ustclug.org/css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#agent-的概念" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Notes23S" class="md-header__button md-logo" aria-label="Notes23S" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Notes23S
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Agent 的概念
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/SproutNan/Notes23S" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    SproutNan/Notes23S
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Notes23S" class="md-nav__button md-logo" aria-label="Notes23S" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Notes23S
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/SproutNan/Notes23S" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    SproutNan/Notes23S
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Homepage
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          人工智能导论
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          人工智能导论
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Agent 的概念
+      </a>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          形式化方法
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          形式化方法
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%BD%A2%E5%BC%8F%E5%8C%96%E6%96%B9%E6%B3%95/lab1/" class="md-nav__link">
+        Lab1
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          数据库
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          数据库
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E5%BA%93/chap1/" class="md-nav__link">
+        Chap1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E5%BA%93/chap2/" class="md-nav__link">
+        Chap2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%95%B0%E6%8D%AE%E5%BA%93/chap3/" class="md-nav__link">
+        Chap3
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          计算机图形学
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          计算机图形学
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+          实验
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5_1">
+          <span class="md-nav__icon md-icon"></span>
+          实验
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/%E5%AE%9E%E9%AA%8C/lab1/" class="md-nav__link">
+        Lab1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/%E5%AE%9E%E9%AA%8C/lab2/" class="md-nav__link">
+        Lab2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/%E5%AE%9E%E9%AA%8C/lab3/" class="md-nav__link">
+        Lab3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9B%BE%E5%BD%A2%E5%AD%A6/%E5%AE%9E%E9%AA%8C/lab4/" class="md-nav__link">
+        Lab4
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="agent-的概念">Agent 的概念<a class="headerlink" href="#agent-的概念" title="Permanent link">&para;</a></h1>
+<p><img alt="image-20230329141712659" src="../baseConcepts.assets/image-20230329141712659.png" /></p>
+<blockquote>
+<p>percepts：指来自外部环境的感知数据，通常由传感器收集，例如图像、声音、触觉等。可以被视为人工智能系统的输入，因为它们提供了系统了解和响应其环境的基础。</p>
+</blockquote>
+<ul>
+<li>Agent 将 percepts 映射为 actions，对 environment 产生影响</li>
+</ul>
+<div class="arithmatex">
+<div class="MathJax_Preview">
+f:\mathcal{P}\rightarrow\mathcal{A}
+</div>
+<script type="math/tex; mode=display">
+f:\mathcal{P}\rightarrow\mathcal{A}
+</script>
+</div>
+<ul>
+<li>Agent 运行在物理机器（某种 architecture）上以产生 <span class="arithmatex"><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span></li>
+</ul>
+<h1 id="问题求解">问题求解<a class="headerlink" href="#问题求解" title="Permanent link">&para;</a></h1>
+<h2 id="agent-设计">Agent 设计<a class="headerlink" href="#agent-设计" title="Permanent link">&para;</a></h2>
+<h3 id="前提">前提<a class="headerlink" href="#前提" title="Permanent link">&para;</a></h3>
+<ul>
+<li>环境是可观察的：Agent 总是知道当前状态</li>
+<li>环境是离散的：在给定状态，可选择的行动是有限的</li>
+<li>环境是已知的：Agent 知道行动到达的状态</li>
+<li>环境是确定的：Agent 的动作只有一个结果</li>
+</ul>
+<h3 id="agent-的简单设计">Agent 的简单设计<a class="headerlink" href="#agent-的简单设计" title="Permanent link">&para;</a></h3>
+<ul>
+<li>形式化（formulation）</li>
+<li>搜索：寻找行动序列</li>
+<li>执行：将搜索得到的行动付诸实施</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">seq</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Action</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span>       <span class="c1"># 行动序列</span>
+<span class="n">state</span> <span class="o">=</span> <span class="o">...</span>                                 <span class="c1"># 当前状态</span>
+<span class="n">goal</span> <span class="o">=</span> <span class="o">...</span>                                  <span class="c1"># 目标，问题没有形式化，一开始为 null</span>
+<span class="n">problem</span> <span class="o">=</span> <span class="o">...</span>                               <span class="c1"># 问题的形式化</span>
+
+<span class="k">def</span> <span class="nf">SIMPLE_PROBLEM_SOLVING_AGENT</span><span class="p">(</span><span class="n">percept</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Action</span><span class="p">:</span>
+  <span class="n">state</span> <span class="o">=</span> <span class="n">UPDATE_STATE</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">percept</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">seq</span> <span class="ow">is</span> <span class="n">empty</span><span class="p">:</span>
+    <span class="n">goal</span> <span class="o">=</span> <span class="n">FORMULATE_GOAL</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+    <span class="n">problem</span> <span class="o">=</span> <span class="n">FORMULATE_PROBLEM</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">goal</span><span class="p">)</span>
+    <span class="n">seq</span> <span class="o">=</span> <span class="n">SEARCH</span><span class="p">(</span><span class="n">problem</span><span class="p">)</span> <span class="c1"># 根据问题找到动作序列</span>
+  <span class="n">action</span> <span class="o">=</span> <span class="n">FIRST</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+  <span class="n">seq</span> <span class="o">=</span> <span class="n">REST</span><span class="p">(</span><span class="n">seq</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">action</span>
+</code></pre></div>
+<h2 id="问题的形式化">问题的形式化<a class="headerlink" href="#问题的形式化" title="Permanent link">&para;</a></h2>
+<p>一个问题可以用五个组成部分形式化表述：</p>
+<ul>
+<li>初始状态</li>
+<li>行动：<span class="arithmatex"><span class="MathJax_Preview">\text{Action}:S\rightarrow S</span><script type="math/tex">\text{Action}:S\rightarrow S</script></span>，<span class="arithmatex"><span class="MathJax_Preview">\text{Action}(s)</span><script type="math/tex">\text{Action}(s)</script></span> 返回在 <span class="arithmatex"><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> 下可执行的动作集合</li>
+<li>转移模型：<span class="arithmatex"><span class="MathJax_Preview">\text{Result}:S\times A\rightarrow S</span><script type="math/tex">\text{Result}:S\times A\rightarrow S</script></span>，<span class="arithmatex"><span class="MathJax_Preview">\text{Result}(s,a)</span><script type="math/tex">\text{Result}(s,a)</script></span> 返回在 <span class="arithmatex"><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> 下执行 <span class="arithmatex"><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> 转移到的状态</li>
+<li>目标测试：确定给定的状态是不是目标状态，可能是一个集合，测试时检查给定的状态在不在此集合中</li>
+<li>路径耗散：即边权，采用行动 <span class="arithmatex"><span class="MathJax_Preview">a</span><script type="math/tex">a</script></span> 从 <span class="arithmatex"><span class="MathJax_Preview">s</span><script type="math/tex">s</script></span> 转移到 <span class="arithmatex"><span class="MathJax_Preview">s'</span><script type="math/tex">s'</script></span> 的路径耗散用 <span class="arithmatex"><span class="MathJax_Preview">c(s,a,s')</span><script type="math/tex">c(s,a,s')</script></span> 表示</li>
+</ul>
+<p>问题的解就是从初始状态到目标状态的一组行动序列，解的质量由路径耗散函数度量，具有最小耗散的解即为最优解。</p>
+<p><strong>增量形式化</strong>：</p>
+<ul>
+<li>状态</li>
+<li>初始状态</li>
+<li>行动</li>
+<li>转移模型</li>
+<li>目标测试</li>
+<li>路径耗散</li>
+</ul>
+<h3 id="问题实例">问题实例<a class="headerlink" href="#问题实例" title="Permanent link">&para;</a></h3>
+<ul>
+<li>八数码问题</li>
+<li>八皇后问题</li>
+</ul>
+<h2 id="基本搜索算法">基本搜索算法<a class="headerlink" href="#基本搜索算法" title="Permanent link">&para;</a></h2>
+<p>搜索树：结点有重复，但登记过程简单</p>
+<p>搜索图：结点无重复，但登记过程复杂（每次都要查重），省空间，费时间</p>
+<h3 id="搜索树节点数据结构">搜索树节点数据结构<a class="headerlink" href="#搜索树节点数据结构" title="Permanent link">&para;</a></h3>
+<ul>
+<li><span class="arithmatex"><span class="MathJax_Preview">n.\text{STATE}</span><script type="math/tex">n.\text{STATE}</script></span>：对应状态空间中的状态</li>
+<li><span class="arithmatex"><span class="MathJax_Preview">n.\text{PARENT}</span><script type="math/tex">n.\text{PARENT}</script></span>：节点的父节点</li>
+<li><span class="arithmatex"><span class="MathJax_Preview">n.\text{ACTION}</span><script type="math/tex">n.\text{ACTION}</script></span>：父节点生成该节点时进行的行动</li>
+<li><span class="arithmatex"><span class="MathJax_Preview">n.\text{COST}</span><script type="math/tex">n.\text{COST}</script></span>：代价，一般用 <span class="arithmatex"><span class="MathJax_Preview">g(n)</span><script type="math/tex">g(n)</script></span> 表示，指从初始状态到达该节点的路径消耗</li>
+</ul>
+<h3 id="搜索树数据结构">搜索树数据结构<a class="headerlink" href="#搜索树数据结构" title="Permanent link">&para;</a></h3>
+<ul>
+<li>队列，可以是 FIFO 队列，可以是 LIFO 队列，也可以是优先队列</li>
+</ul>
+<h3 id="搜索算法评价">搜索算法评价<a class="headerlink" href="#搜索算法评价" title="Permanent link">&para;</a></h3>
+<ul>
+<li>完备性 Completeness：能否找到解？</li>
+<li>最优性 Optimality：是否总能找到最优解？</li>
+<li>时间复杂度：节点生成数量</li>
+<li>空间复杂度：过程中内存中最大节点数</li>
+</ul>
+<p>AI 算法的复杂度通常由下面三个量来表达：</p>
+<ul>
+<li><span class="arithmatex"><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span>：分支因子，任何节点的最多后继数</li>
+<li><span class="arithmatex"><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span>：目标节点所在的最浅的深度</li>
+<li><span class="arithmatex"><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span>：状态空间中任何路径的最大长度</li>
+</ul>
+<h3 id="无信息搜索">无信息搜索<a class="headerlink" href="#无信息搜索" title="Permanent link">&para;</a></h3>
+<p>又称盲目搜索</p>
+<h4 id="宽度优先搜索-breadth-first-search">宽度优先搜索 Breadth-first Search<a class="headerlink" href="#宽度优先搜索-breadth-first-search" title="Permanent link">&para;</a></h4>
+<ul>
+<li>做法：先扩展根结点，接着扩展根结点的所有后继，然后再扩展它们的后继，依此类推。</li>
+<li>性质：在下一层的任何结点扩展之前，搜索树上本层深度的所有结点都应该已经扩展过。</li>
+<li>实现：每次总是扩展深度最浅的结点，可以通过将边缘组织成 FIFO 队列来实现。</li>
+</ul>
+<p><strong>Advantages</strong>：</p>
+<ul>
+<li>完备，并且知道目标节点生成后就知道是最浅的，否则将不会被生成</li>
+<li>如果路径代价是深度的非递减函数，则 BFS 是最优的，最 general 的情况是所有代价都相同</li>
+</ul>
+<p><strong>Disadvantages</strong>：</p>
+<ul>
+<li>生成的节点总数 <span class="arithmatex"><span class="MathJax_Preview">O(b+...+b^d)=O(b^d)</span><script type="math/tex">O(b+...+b^d)=O(b^d)</script></span>，是指数的</li>
+<li>有路径重复问题</li>
+</ul>
+<h4 id="一致代价搜索-uniform-cost-search">一致代价搜索 Uniform-cost Search<a class="headerlink" href="#一致代价搜索-uniform-cost-search" title="Permanent link">&para;</a></h4>
+<ul>
+<li>做法：拓展路径消耗 <span class="arithmatex"><span class="MathJax_Preview">g(n)</span><script type="math/tex">g(n)</script></span> 最小的节点 <span class="arithmatex"><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span></li>
+<li>实现：将边缘节点集组织成按 <span class="arithmatex"><span class="MathJax_Preview">g</span><script type="math/tex">g</script></span> 值排序的队列</li>
+<li>性质：对任何单步代价函数都是最优的</li>
+</ul>
+<blockquote>
+<p><strong>和 BFS 的不同点</strong></p>
+<ul>
+<li>目标检测是在节点被选择拓展的时候，而不是节点生成的时候，因为不一定第一个生成的目标节点是在最优路径上</li>
+</ul>
+</blockquote>
+<p><strong>Advantages</strong>：</p>
+<ul>
+<li>最优，当 <span class="arithmatex"><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> 被扩展的时候，到达 <span class="arithmatex"><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> 的最优路径已经被搜索出来了，否则不会扩展 <span class="arithmatex"><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span></li>
+<li>完备，只要每一步的代价都是正数（为 0 会导致 NoOp 循环）</li>
+</ul>
+<p><strong>Disadvantages</strong>：</p>
+<p>设最优解代价 <span class="arithmatex"><span class="MathJax_Preview">C^*</span><script type="math/tex">C^*</script></span>，每个行动的代价至少为 <span class="arithmatex"><span class="MathJax_Preview">\varepsilon&gt;0</span><script type="math/tex">\varepsilon>0</script></span></p>
+<ul>
+<li>最坏情况下的复杂度为 <span class="arithmatex"><span class="MathJax_Preview">O(b^{1+\lfloor C^*/\varepsilon\rfloor})</span><script type="math/tex">O(b^{1+\lfloor C^*/\varepsilon\rfloor})</script></span>，比 <span class="arithmatex"><span class="MathJax_Preview">O(b^{d+1})</span><script type="math/tex">O(b^{d+1})</script></span> 大得多（除非所有代价都相等，否则将对代价小的行动有偏好）</li>
+<li>由于目标检测延后，UCS 会比 BFS 多做一些工作</li>
+</ul>
+<h4 id="深度优先搜索-depth-first-search">深度优先搜索 Depth-first Search<a class="headerlink" href="#深度优先搜索-depth-first-search" title="Permanent link">&para;</a></h4>
+<ul>
+<li>做法：总是扩展最深的节点</li>
+<li>实现：使用 LIFO 队列</li>
+<li>性质：最新生成的节点最早被扩展，每次被扩展的都是最深的未被扩展的节点</li>
+</ul>
+<p><strong>Disadvantages</strong>：</p>
+<ul>
+<li>严重依赖使用图搜索/树搜索</li>
+</ul>
+<blockquote>
+<p>使用避免重复状态和冗余路径的 DFS 图搜索在有限状态空间是完备的，因为其至多扩展至所有节点；树搜索则不完备，会陷入死循环。</p>
+</blockquote>
+<ul>
+<li>节点生成可能非常大</li>
+</ul>
+<p><strong>Advantages</strong>：</p>
+<ul>
+<li>可能无需耗费额外内存，或者耗费很少的额外内存。因为一个节点被扩展之后，其所有后代都扩展后此节点就被删除。如果分支因子 <span class="arithmatex"><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span> 、最大深度 <span class="arithmatex"><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span> ，则 DFS 存储的节点数是 <span class="arithmatex"><span class="MathJax_Preview">O(bm)</span><script type="math/tex">O(bm)</script></span></li>
+<li>还可以改装成回溯搜索，每个被部分扩展的节点将记住其下一个要产生的节点，这样内存只需要 <span class="arithmatex"><span class="MathJax_Preview">O(m)</span><script type="math/tex">O(m)</script></span></li>
+</ul>
+<h4 id="深度受限搜索-depth-limited-search">深度受限搜索 Depth-limited Search<a class="headerlink" href="#深度受限搜索-depth-limited-search" title="Permanent link">&para;</a></h4>
+<p>做法：设置深度界限 <span class="arithmatex"><span class="MathJax_Preview">l</span><script type="math/tex">l</script></span>，深度为 <span class="arithmatex"><span class="MathJax_Preview">l</span><script type="math/tex">l</script></span> 的节点当作没有后继</p>
+<blockquote>
+<p>注意区分是标准的无解（failure）还是在界限内无解（cutoff）</p>
+</blockquote>
+<h4 id="迭代加深的深度优先搜索-iterative-deepening-search">迭代加深的深度优先搜索 Iterative Deepening Search<a class="headerlink" href="#迭代加深的深度优先搜索-iterative-deepening-search" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">ITERRATIVE_DEEPENING_SEARCH</span><span class="p">(</span><span class="n">problem</span><span class="p">):</span>
+  <span class="k">for</span> <span class="n">depth</span> <span class="ow">in</span> <span class="mi">0</span><span class="o">~</span><span class="n">infty</span><span class="p">:</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">DLS</span><span class="p">(</span><span class="n">problem</span><span class="p">,</span> <span class="n">depth</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">result</span> <span class="o">!=</span> <span class="n">cutoff</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">result</span>
+</code></pre></div>
+<p>上层节点重复生成多次影响不大，因为绝大多数节点都在底层</p>
+<h4 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h4>
+<ul>
+<li><span class="arithmatex"><span class="MathJax_Preview">b</span><script type="math/tex">b</script></span>：分支因子，任何节点的最多后继数</li>
+<li><span class="arithmatex"><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span>：目标节点所在的最浅的深度</li>
+<li><span class="arithmatex"><span class="MathJax_Preview">m</span><script type="math/tex">m</script></span>：状态空间中任何路径的最大长度</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">Criterion</th>
+<th align="center">BFS</th>
+<th align="center">UCS</th>
+<th align="center">DFS</th>
+<th align="center">DLS</th>
+<th align="center">IDS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">完备性</td>
+<td align="center">Yes</td>
+<td align="center">Yes</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">Yes</td>
+</tr>
+<tr>
+<td align="center">时间复杂度</td>
+<td align="center"><span class="arithmatex"><span class="MathJax_Preview">O(b^{d+1})</span><script type="math/tex">O(b^{d+1})</script></span></td>
+<td align="center"><span class="arithmatex"><span class="MathJax_Preview">O(b^{\lceil C^*/\varepsilon\rceil})</span><script type="math/tex">O(b^{\lceil C^*/\varepsilon\rceil})</script></span></td>
+<td align="center"><span class="arithmatex"><span class="MathJax_Preview">O(b^m)</span><script type="math/tex">O(b^m)</script></span></td>
+<td align="center"><span class="arithmatex"><span class="MathJax_Preview">O(b^l)</span><script type="math/tex">O(b^l)</script></span></td>
+<td align="center"><span class="arithmatex"><span class="MathJax_Preview">O(b^d)</span><script type="math/tex">O(b^d)</script></span></td>
+</tr>
+<tr>
+<td align="center">空间复杂度</td>
+<td align="center"><span class="arithmatex"><span class="MathJax_Preview">O(b^{d+1})</span><script type="math/tex">O(b^{d+1})</script></span></td>
+<td align="center"><span class="arithmatex"><span class="MathJax_Preview">O(b^{\lceil C^*/\varepsilon\rceil})</span><script type="math/tex">O(b^{\lceil C^*/\varepsilon\rceil})</script></span></td>
+<td align="center"><span class="arithmatex"><span class="MathJax_Preview">O(bm)</span><script type="math/tex">O(bm)</script></span></td>
+<td align="center"><span class="arithmatex"><span class="MathJax_Preview">O(bl)</span><script type="math/tex">O(bl)</script></span></td>
+<td align="center"><span class="arithmatex"><span class="MathJax_Preview">O(bd)</span><script type="math/tex">O(bd)</script></span></td>
+</tr>
+<tr>
+<td align="center">最优性</td>
+<td align="center">Yes</td>
+<td align="center">Yes</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">Yes</td>
+</tr>
+</tbody>
+</table>
+<h3 id="启发式搜索最佳优先搜索">启发式搜索：最佳优先搜索<a class="headerlink" href="#启发式搜索最佳优先搜索" title="Permanent link">&para;</a></h3>
+<p>做法：基于评价函数 <span class="arithmatex"><span class="MathJax_Preview">f(n)</span><script type="math/tex">f(n)</script></span> 选择被扩展的节点（类似用此替换 UCS 的 <span class="arithmatex"><span class="MathJax_Preview">g(n)</span><script type="math/tex">g(n)</script></span>）</p>
+<h4 id="贪婪最佳优先搜索">贪婪最佳优先搜索<a class="headerlink" href="#贪婪最佳优先搜索" title="Permanent link">&para;</a></h4>
+<p>做法：只使用启发式信息，即 <span class="arithmatex"><span class="MathJax_Preview">f(n)=h(n)</span><script type="math/tex">f(n)=h(n)</script></span></p>
+<p>最坏情况下的时间和空间复杂度都是 <span class="arithmatex"><span class="MathJax_Preview">O(b^m)</span><script type="math/tex">O(b^m)</script></span></p>
+<h4 id="a搜索">A*搜索<a class="headerlink" href="#a搜索" title="Permanent link">&para;</a></h4>
+<p>做法：<span class="arithmatex"><span class="MathJax_Preview">f(n)=g(n)+h(n)</span><script type="math/tex">f(n)=g(n)+h(n)</script></span></p>
+<blockquote>
+<p><strong>如何保证最优性？</strong></p>
+<ul>
+<li><span class="arithmatex"><span class="MathJax_Preview">h(n)</span><script type="math/tex">h(n)</script></span> 是可采纳的，不会过高估计到达目标的代价，则 <span class="arithmatex"><span class="MathJax_Preview">f(n)\le C^*</span><script type="math/tex">f(n)\le C^*</script></span></li>
+<li><span class="arithmatex"><span class="MathJax_Preview">h(n)</span><script type="math/tex">h(n)</script></span> 是一致的（单调的），类似三角不等式：<span class="arithmatex"><span class="MathJax_Preview">h(n)\le c(n,a,n')+h(n')</span><script type="math/tex">h(n)\le c(n,a,n')+h(n')</script></span></li>
+<li>一致的启发式都是可采纳的，第二个条件比第一个条件强</li>
+</ul>
+</blockquote>
+<p>性质：</p>
+<ul>
+<li>如果 <span class="arithmatex"><span class="MathJax_Preview">h(n)</span><script type="math/tex">h(n)</script></span> 可采纳，则 A* 的树搜索版本是最优的</li>
+<li>如果 <span class="arithmatex"><span class="MathJax_Preview">h(n)</span><script type="math/tex">h(n)</script></span> 是一致的，则 A* 的图搜索版本是最优的</li>
+</ul>
+<p><strong>最优性的证明</strong></p>
+<p>假设某个非最优的目标节点 <span class="arithmatex"><span class="MathJax_Preview">G_2</span><script type="math/tex">G_2</script></span> 生成了，而到达最优节点 <span class="arithmatex"><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span> 的最短路径上的节点 <span class="arithmatex"><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> 还未扩展。</p>
+<ul>
+<li><span class="arithmatex"><span class="MathJax_Preview">f(G_2)=g(G_2)</span><script type="math/tex">f(G_2)=g(G_2)</script></span>，因为 <span class="arithmatex"><span class="MathJax_Preview">G_2</span><script type="math/tex">G_2</script></span> 是目标，<span class="arithmatex"><span class="MathJax_Preview">h(G_2)=0</span><script type="math/tex">h(G_2)=0</script></span></li>
+<li><span class="arithmatex"><span class="MathJax_Preview">g(G_2)&gt;g(G)</span><script type="math/tex">g(G_2)>g(G)</script></span>，因为 <span class="arithmatex"><span class="MathJax_Preview">G_2</span><script type="math/tex">G_2</script></span> 不是最优的</li>
+<li><span class="arithmatex"><span class="MathJax_Preview">f(G)=g(G)</span><script type="math/tex">f(G)=g(G)</script></span>，因为 <span class="arithmatex"><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span> 是目标，<span class="arithmatex"><span class="MathJax_Preview">h(G)=0</span><script type="math/tex">h(G)=0</script></span></li>
+<li><span class="arithmatex"><span class="MathJax_Preview">f(G_2)&gt;f(G)</span><script type="math/tex">f(G_2)>f(G)</script></span>，由上可得</li>
+<li><span class="arithmatex"><span class="MathJax_Preview">h(n)&lt;h^*(n)</span><script type="math/tex">h(n)<h^*(n)</script></span>，因为 <span class="arithmatex"><span class="MathJax_Preview">h</span><script type="math/tex">h</script></span> 是可采纳的</li>
+<li><span class="arithmatex"><span class="MathJax_Preview">f(n)=g(n)+h(n)\le g(n)+h^*(n)=g(G)=f(G)</span><script type="math/tex">f(n)=g(n)+h(n)\le g(n)+h^*(n)=g(G)=f(G)</script></span></li>
+<li><span class="arithmatex"><span class="MathJax_Preview">f(n)\le f(G)&lt;f(G_2)</span><script type="math/tex">f(n)\le f(G)<f(G_2)</script></span>，所以假设是不成立的，如果存在这样的 <span class="arithmatex"><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> 未被扩展，不可能扩展到次优目标节点</li>
+</ul>
+<blockquote>
+<p><span class="arithmatex"><span class="MathJax_Preview">h^*(n)</span><script type="math/tex">h^*(n)</script></span> 表示从节点 <span class="arithmatex"><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> 到目标节点的最优路径的实际代价</p>
+</blockquote>
+<p><strong>一致性的性质</strong></p>
+<p><img alt="image-20230329201259880" src="../baseConcepts.assets/image-20230329201259880.png" />
+$$
+\begin{aligned}
+f(n')&amp;=g(n')+h(n')\
+&amp;=g(n)+c(n,a,n')+h(n')\
+&amp;\ge g(n)+h(n)\
+&amp;=f(n)
+\end{aligned}
+$$</p>
+<blockquote>
+<p>一致性是指由当前节点 <span class="arithmatex"><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> 出发，到达任一后继节点 <span class="arithmatex"><span class="MathJax_Preview">n'</span><script type="math/tex">n'</script></span> 路径上的 <span class="arithmatex"><span class="MathJax_Preview">f</span><script type="math/tex">f</script></span> 值不会下降。</p>
+</blockquote>
+<p>其他性质：</p>
+<ul>
+<li>A* 算法将会扩展所有 <span class="arithmatex"><span class="MathJax_Preview">f(n)&lt;C^*</span><script type="math/tex">f(n)<C^*</script></span> 的节点</li>
+<li>A* 算法将会扩展某些 <span class="arithmatex"><span class="MathJax_Preview">f(n)=C^*</span><script type="math/tex">f(n)=C^*</script></span> 的节点</li>
+<li>A* 算法不会扩展任何 <span class="arithmatex"><span class="MathJax_Preview">f(n)&gt;C^*</span><script type="math/tex">f(n)>C^*</script></span> 的节点</li>
+</ul>
+<blockquote>
+<p><strong>例子：八数码问题</strong></p>
+<p><span class="arithmatex"><span class="MathJax_Preview">h_1(n)=</span><script type="math/tex">h_1(n)=</script></span> 错位的棋子数</p>
+<p><span class="arithmatex"><span class="MathJax_Preview">h_2(n)=</span><script type="math/tex">h_2(n)=</script></span> 所有棋子到目标位置的曼哈顿距离和</p>
+<p><strong>占优势（Dominance）</strong></p>
+<p>如果任意节点 <span class="arithmatex"><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span>，<span class="arithmatex"><span class="MathJax_Preview">h_2(n)\ge h_1(n)</span><script type="math/tex">h_2(n)\ge h_1(n)</script></span>，则说前者 dominates 后者</p>
+<p>除了某些 <span class="arithmatex"><span class="MathJax_Preview">f(n)=C^*</span><script type="math/tex">f(n)=C^*</script></span> 的节点，使用 <span class="arithmatex"><span class="MathJax_Preview">h_2</span><script type="math/tex">h_2</script></span> 的 A<em> 算法不会比使用 <span class="arithmatex"><span class="MathJax_Preview">h_1</span><script type="math/tex">h_1</script></span> 的 A</em> 算法扩展更多的节点</p>
+<p>证明：因为「A<em> 算法将会扩展所有 <span class="arithmatex"><span class="MathJax_Preview">f(n)&lt;C^*</span><script type="math/tex">f(n)<C^*</script></span> 的节点」还可以说成「A</em> 算法将会扩展所有 <span class="arithmatex"><span class="MathJax_Preview">h(n)&lt;C^*-g(n)</span><script type="math/tex">h(n)<C^*-g(n)</script></span> 的节点」，这样就有一个包含性</p>
+</blockquote>
+<h4 id="使用松弛relaxation涉及可采纳启发式">使用松弛（Relaxation）涉及可采纳启发式<a class="headerlink" href="#使用松弛relaxation涉及可采纳启发式" title="Permanent link">&para;</a></h4>
+<p>问题：八数码问题的 <span class="arithmatex"><span class="MathJax_Preview">h_2</span><script type="math/tex">h_2</script></span> 是如何被提出来的？计算机能不能机械地设计出这样的启发式？</p>
+<p>观察：</p>
+<ul>
+<li><span class="arithmatex"><span class="MathJax_Preview">h_1</span><script type="math/tex">h_1</script></span>：如果每个棋子可以随便移动，这个启发式将给出最优确切步数（画画试试！）</li>
+<li><span class="arithmatex"><span class="MathJax_Preview">h_2</span><script type="math/tex">h_2</script></span>：如果每个棋子可以随便移动到<strong>相邻的位置上</strong>，<strong>甚至可以移动到已经被其他棋子占据的位置上</strong>，这个启发式将给出最优确切步数</li>
+</ul>
+<p>构造松弛问题：</p>
+<ul>
+<li>原问题：一个棋子可以从方格 A 移动到方格 B ，如果 A 与 B 水平或者垂直相邻而且B是空的</li>
+<li>松弛1：一个棋子可以从方格 A 移动到方格 B ，如果 A 与 B 相邻（<span class="arithmatex"><span class="MathJax_Preview">h_2</span><script type="math/tex">h_2</script></span>）</li>
+<li>松弛2：一个棋子可以从方格 A 移动到方格 B ，如果 B 是空的</li>
+<li>松弛3：一个棋子可以从方格 A 移动到方格 B（<span class="arithmatex"><span class="MathJax_Preview">h_1</span><script type="math/tex">h_1</script></span>）</li>
+</ul>
+<p>如果有一个可采纳启发式集合 <span class="arithmatex"><span class="MathJax_Preview">\{h_1,..,h_m\}</span><script type="math/tex">\{h_1,..,h_m\}</script></span>，从中如何构造一个更好的启发式？
+$$
+h(n)=\max{h_1(n),...,h_m(n)}
+$$
+上面这个启发式是可采纳的，容易证明是一致的，并且比所有成员启发式都更有优势</p>
+<h3 id="有信息搜索局部搜索算法">有信息搜索：局部搜索算法<a class="headerlink" href="#有信息搜索局部搜索算法" title="Permanent link">&para;</a></h3>
+<p>有些问题不关心路径，比如八皇后问题只关心最后的局面（状态）</p>
+<h4 id="爬山法">爬山法<a class="headerlink" href="#爬山法" title="Permanent link">&para;</a></h4>
+<p>做法：不断向值增加的方向移动，到达一个「峰顶」时终止</p>
+<p>问题：不言而喻</p>
+<p><img alt="image-20230329205306922" src="../baseConcepts.assets/image-20230329205306922.png" /></p>
+<p>解决：随机重启</p>
+<h4 id="模拟退火搜索">模拟退火搜索<a class="headerlink" href="#模拟退火搜索" title="Permanent link">&para;</a></h4>
+<p>做法：随机移动，如果移动使局面改善，则接受移动；否则以概率 <span class="arithmatex"><span class="MathJax_Preview">p&lt;1</span><script type="math/tex">p<1</script></span> 接受该移动</p>
+<blockquote>
+<p>这个概率呈指数级下降，比如 <span class="arithmatex"><span class="MathJax_Preview">p=e^{\Delta E/T}</span><script type="math/tex">p=e^{\Delta E/T}</script></span>，其中 <span class="arithmatex"><span class="MathJax_Preview">\Delta E</span><script type="math/tex">\Delta E</script></span> 是损失，<span class="arithmatex"><span class="MathJax_Preview">T</span><script type="math/tex">T</script></span> 是时间</p>
+</blockquote>
+<h4 id="局部剪枝搜索local-beam-search">局部剪枝搜索（Local Beam Search）<a class="headerlink" href="#局部剪枝搜索local-beam-search" title="Permanent link">&para;</a></h4>
+<ul>
+<li>同时跟踪 <span class="arithmatex"><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> 个状态，而不是一个</li>
+<li>初始状态：随机生成的 <span class="arithmatex"><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> 个状态</li>
+<li>每次迭代，所有 <span class="arithmatex"><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> 个状态的后继全都生成，如果其中有目标，则接受；否则从全部的后继中选择 <span class="arithmatex"><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> 个最优的然后重复</li>
+</ul>
+<p><img alt="image-20230329211021059" src="../baseConcepts.assets/image-20230329211021059.png" /></p>
+<h4 id="遗传算法genetic-algorithmga">遗传算法（Genetic Algorithm，GA）<a class="headerlink" href="#遗传算法genetic-algorithmga" title="Permanent link">&para;</a></h4>
+<p><span class="arithmatex"><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> 个随机生成的状态 —— <strong>种群</strong></p>
+<p>每个状态 —— <strong>个体</strong>，用一个有限长度的字符串表示，比如 01 串</p>
+<p><img alt="image-20230329211320277" src="../baseConcepts.assets/image-20230329211320277.png" /></p>
+<p>每个状态的目标函数值 —— <strong>适应度函数</strong>，好的局面适应度高</p>
+<p><strong>繁殖概率</strong>：如第一行的 <span class="arithmatex"><span class="MathJax_Preview">\displaystyle 31\%=\frac{24}{24+23+20+11}</span><script type="math/tex">\displaystyle 31\%=\frac{24}{24+23+20+11}</script></span></p>
+<p>按照繁殖概率，随机选择两对（Pairs）进行繁殖（Crossover），图中的分割点是另外随机选择的</p>
+<p>Mutation：变异</p>
+<h1 id="约束满足问题">约束满足问题<a class="headerlink" href="#约束满足问题" title="Permanent link">&para;</a></h1>
+<h2 id="定义约束满足问题">定义约束满足问题<a class="headerlink" href="#定义约束满足问题" title="Permanent link">&para;</a></h2>
+<p>约束满足问题包含三个成分 <span class="arithmatex"><span class="MathJax_Preview">X,D,C</span><script type="math/tex">X,D,C</script></span></p>
+<ul>
+<li><span class="arithmatex"><span class="MathJax_Preview">X=\{X_i\}^n</span><script type="math/tex">X=\{X_i\}^n</script></span>，变量集合</li>
+<li><span class="arithmatex"><span class="MathJax_Preview">D=\{D_i\}^n</span><script type="math/tex">D=\{D_i\}^n</script></span>，值域集合，其中 <span class="arithmatex"><span class="MathJax_Preview">D_i</span><script type="math/tex">D_i</script></span> 是由 <span class="arithmatex"><span class="MathJax_Preview">X_i</span><script type="math/tex">X_i</script></span> 的可能取值构成的集合</li>
+<li><span class="arithmatex"><span class="MathJax_Preview">C=\{C_i\}^n</span><script type="math/tex">C=\{C_i\}^n</script></span>，描述变量取值约束的集合，其中 <span class="arithmatex"><span class="MathJax_Preview">C_i</span><script type="math/tex">C_i</script></span> 是 <span class="arithmatex"><span class="MathJax_Preview">&lt;\text{scope},\text{relation}&gt;</span><script type="math/tex"><\text{scope},\text{relation}></script></span></li>
+</ul>
+<p>举例来说，如果 <span class="arithmatex"><span class="MathJax_Preview">X_1,X_2</span><script type="math/tex">X_1,X_2</script></span> 的值域都是 <span class="arithmatex"><span class="MathJax_Preview">\{A,B\}</span><script type="math/tex">\{A,B\}</script></span>，要求二者不能取相同值，则可以描述为 <span class="arithmatex"><span class="MathJax_Preview">&lt;(X_1,X_2),X_1\ne X_2&gt;</span><script type="math/tex"><(X_1,X_2),X_1\ne X_2></script></span></p>
+<p>一个不违反任何约束条件的赋值称之为相容的，或合法的</p>
+<h3 id="着色问题">着色问题<a class="headerlink" href="#着色问题" title="Permanent link">&para;</a></h3>
+<p>CSP 问题可以减少搜索状态，因为约束在搜索时进行了传播</p>
+<p><img alt="image-20230329212904890" src="../baseConcepts.assets/image-20230329212904890.png" /></p>
+<p>假如每个顶点有 3 种备选颜色，不考虑约束传播需要搜索 <span class="arithmatex"><span class="MathJax_Preview">3^5</span><script type="math/tex">3^5</script></span> 个组合，如果考虑 SA 被染色后的情况，则只有 <span class="arithmatex"><span class="MathJax_Preview">2^5</span><script type="math/tex">2^5</script></span> 个组合</p>
+<h3 id="作业调度问题">作业调度问题<a class="headerlink" href="#作业调度问题" title="Permanent link">&para;</a></h3>
+<h3 id="csp-的形式化">CSP 的形式化<a class="headerlink" href="#csp-的形式化" title="Permanent link">&para;</a></h3>
+<p>如果是无限值域，不可能枚举所有可能取值的集合来描述约束条件，只能用约束语言替代 <span class="arithmatex"><span class="MathJax_Preview">X_1\ne X_2\Rightarrow [(A,B),(B,A)]</span><script type="math/tex">X_1\ne X_2\Rightarrow [(A,B),(B,A)]</script></span></p>
+<p>整数变量的线性约束有求解算法，没有算法能够求解整数变量的非线性约束问题</p>
+<h2 id="csp-中的推理约束传播">CSP 中的推理：约束传播<a class="headerlink" href="#csp-中的推理约束传播" title="Permanent link">&para;</a></h2>
+<p>使用约束来减小一个变量的合法取值范围，从而影响到跟此变量有约束关系的另一变量的取值</p>
+<p>可以和搜索交替运行，也可以预处理</p>
+<h3 id="节点相容">节点相容<a class="headerlink" href="#节点相容" title="Permanent link">&para;</a></h3>
+<p>节点相容是解决节点的一元约束</p>
+<h3 id="弧相容">弧相容<a class="headerlink" href="#弧相容" title="Permanent link">&para;</a></h3>
+<p>弧相容是解决所有节点的二元约束</p>
+<h3 id="路径相容">路径相容<a class="headerlink" href="#路径相容" title="Permanent link">&para;</a></h3>
+<p>对于任意两个节点 <span class="arithmatex"><span class="MathJax_Preview">X_1,X_2</span><script type="math/tex">X_1,X_2</script></span>，其路径上经过 <span class="arithmatex"><span class="MathJax_Preview">X_m</span><script type="math/tex">X_m</script></span>，可以通过解决 <span class="arithmatex"><span class="MathJax_Preview">&lt;X_1,X_m&gt;,&lt;X_m,X_2&gt;</span><script type="math/tex"><X_1,X_m>,<X_m,X_2></script></span> 的相容性问题来解决 <span class="arithmatex"><span class="MathJax_Preview">&lt;X_1,X_2&gt;</span><script type="math/tex"><X_1,X_2></script></span> 的部分相容性</p>
+<h3 id="k-相容了解">k-相容（了解）<a class="headerlink" href="#k-相容了解" title="Permanent link">&para;</a></h3>
+<p>如果对于任何 <span class="arithmatex"><span class="MathJax_Preview">k-1</span><script type="math/tex">k-1</script></span> 个变量的相容赋值，第 <span class="arithmatex"><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span> 个变量总能赋予和前 <span class="arithmatex"><span class="MathJax_Preview">k-1</span><script type="math/tex">k-1</script></span> 个变量相容的值，则这个 CSP 是 <em>k</em> 相容的</p>
+<h2 id="csp-的回溯搜索">CSP 的回溯搜索<a class="headerlink" href="#csp-的回溯搜索" title="Permanent link">&para;</a></h2>
+<h3 id="部分赋值的回溯搜索">部分赋值的回溯搜索<a class="headerlink" href="#部分赋值的回溯搜索" title="Permanent link">&para;</a></h3>
+<p>算法：标准 DFS</p>
+<p>状态：部分赋值</p>
+<p>行动：将 var = value 加入赋值中</p>
+<p>困难：CSP 中 <em>n</em> 个值域大小为 <em>d</em> 的变量，顶层的分支因子是 <em>nd</em>（<em>n</em> 个变量，每个都有 <em>d</em> 种选择），下一层是 <span class="arithmatex"><span class="MathJax_Preview">(n-1)d</span><script type="math/tex">(n-1)d</script></span>，整个搜索树的叶子有 <span class="arithmatex"><span class="MathJax_Preview">n!d^n</span><script type="math/tex">n!d^n</script></span> 个，但是完整赋值最多也就 <span class="arithmatex"><span class="MathJax_Preview">d^n</span><script type="math/tex">d^n</script></span> 个！</p>
+<p>原因：忽略了 CSP 的<strong>可交换性</strong>，给变量赋值的时候不需要考虑赋值的顺序</p>
+<h3 id="回溯搜索">回溯搜索<a class="headerlink" href="#回溯搜索" title="Permanent link">&para;</a></h3>
+<p>每次为一个变量选择一个赋值，当没有合法的值可以赋给某变量时就回溯。</p>
+<h4 id="变量和取值顺序">变量和取值顺序<a class="headerlink" href="#变量和取值顺序" title="Permanent link">&para;</a></h4>
+<p>选择变量：</p>
+<ul>
+<li><strong>最少剩余值启发式</strong>（MRV）：选择合法取值最少的变量</li>
+</ul>
+<ul>
+<li><strong>度启发式</strong>：初始时，选择与其他未赋值变量约束最多的变量</li>
+</ul>
+<p>选择赋值：</p>
+<ul>
+<li><strong>最少约束值启发式</strong>：对选定变量采取的赋值，优先选择给邻居变量留下更多选择的（如果要找所有解而不是一个解，则不用关心这个，因为反正所有的变量都要选的）</li>
+</ul>
+<p>Summary：变量选择是失败优先、值选择是失败最后</p>
+<h4 id="前向检验">前向检验<a class="headerlink" href="#前向检验" title="Permanent link">&para;</a></h4>
+<p>推理和搜索交错进行，则每次搜索（赋值）之后，都可以推理邻居变量的值域空间</p>
+<p>前向检验是最简单的推理形式，只要变量 <span class="arithmatex"><span class="MathJax_Preview">X</span><script type="math/tex">X</script></span> 被赋值了，就进行弧相容检查</p>
+<h3 id="问题的结构">问题的结构<a class="headerlink" href="#问题的结构" title="Permanent link">&para;</a></h3>
+<p>Theorem：任何树状结构 CSP 问题都可以在变量个数的线性时间（<span class="arithmatex"><span class="MathJax_Preview">O(nd^2)</span><script type="math/tex">O(nd^2)</script></span>）内求解</p>
+<h3 id="csp-的局部搜索">CSP 的局部搜索<a class="headerlink" href="#csp-的局部搜索" title="Permanent link">&para;</a></h3>
+<p>使用完整状态形式化</p>
+<ul>
+<li>初始状态：给每个变量都赋一个值（可能有矛盾）</li>
+<li>搜索过程：一次改变一个变量的取值（消除矛盾）</li>
+<li>为变量选择新值的启发式：<strong>最少冲突</strong></li>
+</ul>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.19047be9.min.js"></script>
+      
+        <script src="../../mathjax-config.js"></script>
+      
+        <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      
+        <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+      
+    
+  </body>
+</html>
